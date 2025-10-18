@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心理工具 - 情绪岛</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	</head>
+	<body>
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-island-tropical"></i>
+                <span>情绪岛</span>
+                <small>守护心灵的港湾</small>
+            </div>
+            <nav class="nav">
+                <a href="home.html" class="nav-link">
+                    <i class="fas fa-home"></i> 首页
+                </a>
+                <a href="ai-chat.html" class="nav-link">
+                    <i class="fas fa-comments"></i> AI对话
+                </a>
+                <a href="tools.html" class="nav-link active">
+                    <i class="fas fa-toolbox"></i> 心理工具
+                </a>
+                <a href="profile.html" class="nav-link">
+                    <i class="fas fa-user"></i> 个人中心
+                </a>
+            </nav>
+            <div class="user-info">
+                <button class="btn-login" id="loginBtn">登录</button>
+                <div class="user-profile" id="userProfile" style="display: none;">
+                    <div class="user-avatar" id="headerAvatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="user-details">
+                        <span class="user-nickname" id="headerNickname">用户</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="user-dropdown">
+                        <a href="profile.html" class="dropdown-item">
+                            <i class="fas fa-user"></i> 个人中心
+                        </a>
+                        <a href="#" class="dropdown-item" id="headerLogoutBtn">
+                            <i class="fas fa-sign-out-alt"></i> 退出登录
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+        <!-- 心理工具页 -->
+        <section id="tools" class="page active">
+            <div class="tools-header">
+                <h1>心理健康工具箱</h1>
+                <p>科学方法，呵护心灵</p>
+            </div>
+
+            <!-- 工具网格布局 -->
+            <div class="tools-grid">
+                <!-- 左侧：练习工具 -->
+                <div class="tools-main">
+                    <!-- 正念呼吸卡片 - 精简版 -->
+                    <div class="breathing-card-compact" id="breathing-section">
+                        <div class="breathing-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <div class="breathing-info">
+                            <h2>正念呼吸练习</h2>
+                            <p>通过深呼吸练习，帮助你快速平复情绪，减轻压力</p>
+                        </div>
+                        <button class="btn-start-breathing" id="openBreathingModal">
+                            <i class="fas fa-play-circle"></i> 开始练习
+                        </button>
+                    </div>
+
+                    <!-- 冥想音频 - 多行网格 -->
+                    <div class="meditation-section" id="meditation-section">
+                        <h2>冥想音频</h2>
+                        <div class="meditation-scroll-container">
+                            <div class="meditation-scroll">
+                                <div class="meditation-card-small" data-audio="music/morning.mp3">
+                                    <div class="meditation-image-small">
+                                        <i class="fas fa-cloud"></i>
+                                    </div>
+                                    <h3>晨间冥想</h3>
+                                    <p>5分钟</p>
+                                    <button class="btn-play-small"><i class="fas fa-play"></i></button>
+                                </div>
+                                <div class="meditation-card-small" data-audio="music/forest.mp3">
+                                    <div class="meditation-image-small">
+                                        <i class="fas fa-tree"></i>
+                                    </div>
+                                    <h3>森林冥想</h3>
+                                    <p>10分钟</p>
+                                    <button class="btn-play-small"><i class="fas fa-play"></i></button>
+                                </div>
+                                <div class="meditation-card-small" data-audio="music/sea.mp3">
+                                    <div class="meditation-image-small">
+                                        <i class="fas fa-water"></i>
+                                    </div>
+                                    <h3>海浪冥想</h3>
+                                    <p>15分钟</p>
+                                    <button class="btn-play-small"><i class="fas fa-play"></i></button>
+                                </div>
+                                <div class="meditation-card-small" data-audio="music/sleep.mp3">
+                                    <div class="meditation-image-small">
+                                        <i class="fas fa-moon"></i>
+                                    </div>
+                                    <h3>睡前冥想</h3>
+                                    <p>20分钟</p>
+                                    <button class="btn-play-small"><i class="fas fa-play"></i></button>
+                                </div>
+                                <div class="meditation-card-small" data-audio="music/mountain.mp3">
+                                    <div class="meditation-image-small">
+                                        <i class="fas fa-mountain"></i>
+                                    </div>
+                                    <h3>山野冥想</h3>
+                                    <p>12分钟</p>
+                                    <button class="btn-play-small"><i class="fas fa-play"></i></button>
+                                </div>
+                                <div class="meditation-card-small" data-audio="music/relax.mp3">
+                                    <div class="meditation-image-small">
+                                        <i class="fas fa-spa"></i>
+                                    </div>
+                                    <h3>放松冥想</h3>
+                                    <p>8分钟</p>
+                                    <button class="btn-play-small"><i class="fas fa-play"></i></button>
+                                </div>
+                                <div class="meditation-card-small" data-audio="music/star_night.mp3">
+                                    <div class="meditation-image-small">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <h3>星空冥想</h3>
+                                    <p>18分钟</p>
+                                    <button class="btn-play-small"><i class="fas fa-play"></i></button>
+                                </div>
+                                <div class="meditation-card-small" data-audio="music/nature.mp3">
+                                    <div class="meditation-image-small">
+                                        <i class="fas fa-leaf"></i>
+                                    </div>
+                                    <h3>自然冥想</h3>
+                                    <p>15分钟</p>
+                                    <button class="btn-play-small"><i class="fas fa-play"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右侧：心理测评 - 可滚动列表 -->
+                <div class="tools-sidebar">
+                    <div class="assessment-container" id="assessment-section">
+                        <h2>专业心理测评</h2>
+                        <div class="assessment-scroll-list">
+                            <div class="assessment-item-small" id="apeskPstrAssessment">
+                                <i class="fas fa-chart-line"></i>
+                                <div class="assessment-text">
+                                    <h3>APESK-PSTR心理压力量表</h3>
+                                    <p>约10分钟</p>
+                                </div>
+                                <button class="btn-start-small" id="startApeskPstr">开始</button>
+                            </div>
+                            <div class="assessment-item-small" id="sasAssessment">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <div class="assessment-text">
+                                    <h3>SAS焦虑自评量表</h3>
+                                    <p>约5分钟</p>
+                                </div>
+                                <button class="btn-start-small" id="startSas">开始</button>
+                            </div>
+                            <div class="assessment-item-small" id="sdsAssessment">
+                                <i class="fas fa-cloud-rain"></i>
+                                <div class="assessment-text">
+                                    <h3>SDS抑郁自评量表</h3>
+                                    <p>约5分钟</p>
+                                </div>
+                                <button class="btn-start-small" id="startSds">开始</button>
+                            </div>
+                            <div class="assessment-item-small" id="baiAssessment">
+                                <i class="fas fa-heartbeat"></i>
+                                <div class="assessment-text">
+                                    <h3>BAI贝克焦虑测试</h3>
+                                    <p>约5分钟</p>
+                                </div>
+                                <button class="btn-start-small" id="startBai">开始</button>
+                            </div>
+                            <div class="assessment-item-small" id="psqiAssessment">
+                                <i class="fas fa-bed"></i>
+                                <div class="assessment-text">
+                                    <h3>PSQI 匹兹堡睡眠质量指数</h3>
+                                    <p>约4分钟</p>
+                                </div>
+                                <button class="btn-start-small" id="startPsqi">开始</button>
+                            </div>
+                            <div class="assessment-item-small" id="dass21Assessment">
+                                <i class="fas fa-chart-pie"></i>
+                                <div class="assessment-text">
+                                    <h3>DASS-21 抑郁焦虑压力量表</h3>
+                                    <p>约5分钟</p>
+                                </div>
+                                <button class="btn-start-small" id="startDass21">开始</button>
+                            </div>
+                            <div class="assessment-item-small" id="scl90Assessment">
+                                <i class="fas fa-notes-medical"></i>
+                                <div class="assessment-text">
+                                    <h3>SCL-90 心理健康自评量表</h3>
+                                    <p>约10分钟</p>
+                                </div>
+                                <button class="btn-start-small" id="startScl90">开始</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 冥想音频播放模态框 -->
+    <div class="modal-overlay" id="meditationModal">
+        <div class="modal-content meditation-player-modal">
+            <button class="modal-close" id="closeMeditationModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="meditation-player-header">
+                <h2 id="meditationPlayerTitle">晨间冥想</h2>
+                <p class="meditation-player-subtitle">让心灵在宁静中苏醒</p>
+            </div>
+            
+            <div class="meditation-visualizer">
+                <div class="stars-container">
+                    <div class="star star-1"></div>
+                    <div class="star star-2"></div>
+                    <div class="star star-3"></div>
+                    <div class="star star-4"></div>
+                    <div class="star star-5"></div>
+                    <div class="star star-6"></div>
+                    <div class="star star-7"></div>
+                    <div class="star star-8"></div>
+                </div>
+                <div class="shooting-star shooting-star-1"></div>
+                <div class="shooting-star shooting-star-2"></div>
+                <div class="wave-container">
+                    <div class="wave wave-1"></div>
+                    <div class="wave wave-2"></div>
+                    <div class="wave wave-3"></div>
+                </div>
+                <div class="meditation-circle">
+                    <div class="meditation-player-icon" id="meditationPlayerIcon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="meditation-controls">
+                <div class="time-display">
+                    <span id="currentTime">00:00</span>
+                    <span id="totalTime">05:00</span>
+                </div>
+                
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                    <input type="range" class="progress-slider" id="progressSlider" min="0" max="100" value="0">
+                </div>
+                
+                <div class="player-buttons">
+                    <button class="player-btn btn-backward" id="btnBackward">
+                        <i class="fas fa-backward"></i>
+                    </button>
+                    <button class="player-btn btn-play-pause" id="btnPlayPause">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="player-btn btn-forward" id="btnForward">
+                        <i class="fas fa-forward"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 正念呼吸模态框 -->
+    <div class="modal-overlay" id="breathingModal">
+        <div class="modal-content breathing-modal">
+            <button class="modal-close" id="closeBreathingModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="breathing-header">
+                <h2>正念呼吸练习</h2>
+                <p class="breathing-subtitle">跟随呼吸的节奏，找回内心的平静</p>
+            </div>
+            
+            <div class="breathing-visualizer">
+                <div class="breathing-particles">
+                    <div class="particle p-1"></div>
+                    <div class="particle p-2"></div>
+                    <div class="particle p-3"></div>
+                    <div class="particle p-4"></div>
+                    <div class="particle p-5"></div>
+                    <div class="particle p-6"></div>
+                </div>
+                <div class="breathing-circle" id="breathingCircle">
+                    <div class="breathing-text" id="breathingText">准备开始</div>
+                </div>
+            </div>
+            
+            <div class="breathing-instruction" id="breathingInstruction">
+                点击开始按钮进行呼吸练习
+            </div>
+            
+            <div class="breathing-controls-section">
+                <div class="breathing-settings">
+                    <div class="setting-item">
+                        <label>
+                            <i class="fas fa-arrow-down"></i>
+                            <span>吸气</span>
+                            <strong id="inhaleTime">4</strong>秒
+                        </label>
+                        <input type="range" id="inhaleSlider" min="2" max="8" value="4">
+                    </div>
+                    <div class="setting-item">
+                        <label>
+                            <i class="fas fa-arrow-up"></i>
+                            <span>呼气</span>
+                            <strong id="exhaleTime">6</strong>秒
+                        </label>
+                        <input type="range" id="exhaleSlider" min="2" max="10" value="6">
+                    </div>
+                </div>
+                
+                <div class="breathing-actions">
+                    <button class="btn-breathing-start" id="startBreathing">
+                        <i class="fas fa-play"></i>
+                        <span>开始练习</span>
+                    </button>
+                    <button class="btn-breathing-stop" id="stopBreathing" style="display:none;">
+                        <i class="fas fa-stop"></i>
+                        <span>停止</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- APESK-PSTR 心理压力量表模态框 -->
+    <div class="modal-overlay" id="apeskPstrModal">
+        <div class="modal-content assessment-modal">
+            <button class="modal-close" id="closeApeskPstrModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <!-- 测评头部 -->
+            <div class="assessment-modal-header">
+                <div class="assessment-modal-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h2>APESK-PSTR 心理压力量表</h2>
+                <p class="assessment-modal-subtitle">了解你的压力水平，找到心灵的平衡点</p>
+            </div>
+            
+            <!-- 测评主体区域 -->
+            <div class="assessment-modal-body">
+                <!-- 欢迎页 -->
+                <div class="assessment-welcome" id="apeskWelcome">
+                    <div class="welcome-content">
+                        <div class="welcome-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h3>测评说明</h3>
+                        <div class="welcome-desc">
+                            <p>本量表共有<strong>50道题目</strong>，用于评估您的心理压力水平。</p>
+                            <p>请根据您<strong>最近一个月</strong>的真实感受进行选择：</p>
+                            <ul>
+                                <li><span class="option-badge">A</span> 总是</li>
+                                <li><span class="option-badge">B</span> 经常</li>
+                                <li><span class="option-badge">C</span> 有时</li>
+                                <li><span class="option-badge">D</span> 很少</li>
+                                <li><span class="option-badge">E</span> 从未</li>
+                            </ul>
+                            <p class="welcome-tips">
+                                <i class="fas fa-lightbulb"></i>
+                                请诚实作答，答案无对错之分，预计用时<strong>10分钟</strong>。
+                            </p>
+                        </div>
+                        <button class="btn-assessment-start" id="startApeskTest">
+                            <i class="fas fa-play-circle"></i>
+                            开始测评
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 答题页 -->
+                <div class="assessment-question" id="apeskQuestion" style="display: none;">
+                    <div class="question-progress">
+                        <div class="progress-bar-wrapper">
+                            <div class="progress-bar-fill" id="apeskProgress"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>题目 <strong id="currentQuestionNum">1</strong> / 50</span>
+                            <span id="progressPercent">2%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="question-content">
+                        <h3 class="question-title" id="questionTitle">1. 受背痛之苦</h3>
+                        
+                        <div class="question-options">
+                            <button class="option-btn" data-score="4">
+                                <span class="option-label">A</span>
+                                <span class="option-text">总是</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button class="option-btn" data-score="3">
+                                <span class="option-label">B</span>
+                                <span class="option-text">经常</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button class="option-btn" data-score="2">
+                                <span class="option-label">C</span>
+                                <span class="option-text">有时</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button class="option-btn" data-score="1">
+                                <span class="option-label">D</span>
+                                <span class="option-text">很少</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button class="option-btn" data-score="0">
+                                <span class="option-label">E</span>
+                                <span class="option-text">从未</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="question-navigation">
+                        <button class="btn-question-nav btn-prev" id="prevQuestion" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                            上一题
+                        </button>
+                        <button class="btn-question-nav btn-next" id="nextQuestion" disabled>
+                            下一题
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 结果页 -->
+                <div class="assessment-result" id="apeskResult" style="display: none;">
+                    <div class="result-score-card">
+                        <div class="result-icon" id="resultIcon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="result-score" id="resultScore">0</div>
+                        <div class="result-level" id="resultLevel">压力水平</div>
+                    </div>
+                    
+                    <div class="result-analysis">
+                        <h3><i class="fas fa-clipboard-check"></i> 结果分析</h3>
+                        <p id="resultText">结果分析内容...</p>
+                    </div>
+                    
+                    <div class="result-actions">
+                        <button class="btn-result-action btn-restart" id="restartApeskTest">
+                            <i class="fas fa-redo"></i>
+                            重新测评
+                        </button>
+                        <button class="btn-result-action btn-consult" onclick="location.href='ai-chat.html'">
+                            <i class="fas fa-comments"></i>
+                            AI心理咨询
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SAS 焦虑自评量表模态框 -->
+    <div class="modal-overlay" id="sasModal">
+        <div class="modal-content assessment-modal">
+            <button class="modal-close" id="closeSasModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="assessment-modal-header">
+                <div class="assessment-modal-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h2>SAS 焦虑自评量表</h2>
+                <p class="assessment-modal-subtitle">了解您的焦虑水平，及时关注心理健康</p>
+            </div>
+            
+            <div class="assessment-modal-body">
+                <!-- 欢迎页 -->
+                <div class="assessment-welcome" id="sasWelcome">
+                    <div class="welcome-content">
+                        <div class="welcome-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h3>测评说明</h3>
+                        <div class="welcome-desc">
+                            <p>本量表共有<strong>20道题目</strong>，用于评估您的焦虑水平。</p>
+                            <p>请根据您<strong>过去一周</strong>的实际感觉选择：</p>
+                            <ul>
+                                <li><span class="option-badge">1</span> 没有或很少时间</li>
+                                <li><span class="option-badge">2</span> 小部分时间</li>
+                                <li><span class="option-badge">3</span> 相当多时间</li>
+                                <li><span class="option-badge">4</span> 绝大部分或全部时间</li>
+                            </ul>
+                            <p class="welcome-tips">
+                                <i class="fas fa-lightbulb"></i>
+                                请根据第一印象作答，预计用时<strong>5分钟</strong>。
+                            </p>
+                        </div>
+                        <button class="btn-assessment-start" id="startSasTest">
+                            <i class="fas fa-play-circle"></i>
+                            开始测评
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 答题页 -->
+                <div class="assessment-question" id="sasQuestion" style="display: none;">
+                    <div class="question-progress">
+                        <div class="progress-bar-wrapper">
+                            <div class="progress-bar-fill" id="sasProgress"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>题目 <strong id="sasCurrentQuestionNum">1</strong> / 20</span>
+                            <span id="sasProgressPercent">5%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="question-content">
+                        <h3 class="question-title" id="sasQuestionTitle">1. 我感到比往常更加神经过敏和焦虑</h3>
+                        
+                        <div class="question-options">
+                            <button class="option-btn sas-option" data-score="1">
+                                <span class="option-label">1</span>
+                                <span class="option-text">没有或很少时间</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button class="option-btn sas-option" data-score="2">
+                                <span class="option-label">2</span>
+                                <span class="option-text">小部分时间</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button class="option-btn sas-option" data-score="3">
+                                <span class="option-label">3</span>
+                                <span class="option-text">相当多时间</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button class="option-btn sas-option" data-score="4">
+                                <span class="option-label">4</span>
+                                <span class="option-text">绝大部分或全部时间</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="question-navigation">
+                        <button class="btn-question-nav btn-prev" id="sasPrevQuestion" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                            上一题
+                        </button>
+                        <button class="btn-question-nav btn-next" id="sasNextQuestion" disabled>
+                            下一题
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 结果页 -->
+                <div class="assessment-result" id="sasResult" style="display: none;">
+                    <div class="result-score-card">
+                        <div class="result-icon" id="sasResultIcon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="result-score" id="sasResultScore">0</div>
+                        <div class="result-level" id="sasResultLevel">焦虑水平</div>
+                    </div>
+                    
+                    <div class="result-analysis">
+                        <h3><i class="fas fa-clipboard-check"></i> 结果分析</h3>
+                        <p id="sasResultText">结果分析内容...</p>
+                    </div>
+                    
+                    <div class="result-actions">
+                        <button class="btn-result-action btn-restart" id="restartSasTest">
+                            <i class="fas fa-redo"></i>
+                            重新测评
+                        </button>
+                        <button class="btn-result-action btn-consult" onclick="location.href='ai-chat.html'">
+                            <i class="fas fa-comments"></i>
+                            AI心理咨询
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SDS 抑郁自评量表模态框 -->
+    <div class="modal-overlay" id="sdsModal">
+        <div class="modal-content assessment-modal">
+            <button class="modal-close" id="closeSdsModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="assessment-modal-header">
+                <div class="assessment-modal-icon">
+                    <i class="fas fa-cloud-rain"></i>
+                </div>
+                <h2>SDS 抑郁自评量表</h2>
+                <p class="assessment-modal-subtitle">了解您的抑郁状况，守护心理健康</p>
+            </div>
+            
+            <div class="assessment-modal-body">
+                <!-- 欢迎页 -->
+                <div class="assessment-welcome" id="sdsWelcome">
+                    <div class="welcome-content">
+                        <div class="welcome-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h3>测评说明</h3>
+                        <div class="welcome-desc">
+                            <p>本量表共有<strong>20道题目</strong>，用于评估您的抑郁状态。</p>
+                            <p>请根据您<strong>最近一周</strong>的实际情况选择：</p>
+                            <ul>
+                                <li><span class="option-badge">A</span> 从无或偶尔</li>
+                                <li><span class="option-badge">B</span> 有时</li>
+                                <li><span class="option-badge">C</span> 经常</li>
+                                <li><span class="option-badge">D</span> 总是如此</li>
+                            </ul>
+                            <p class="welcome-tips">
+                                <i class="fas fa-lightbulb"></i>
+                                请如实作答，预计用时<strong>5分钟</strong>。
+                            </p>
+                        </div>
+                        <button class="btn-assessment-start" id="startSdsTest">
+                            <i class="fas fa-play-circle"></i>
+                            开始测评
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 答题页 -->
+                <div class="assessment-question" id="sdsQuestion" style="display: none;">
+                    <div class="question-progress">
+                        <div class="progress-bar-wrapper">
+                            <div class="progress-bar-fill" id="sdsProgress"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>题目 <strong id="sdsCurrentQuestionNum">1</strong> / 20</span>
+                            <span id="sdsProgressPercent">5%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="question-content">
+                        <h3 class="question-title" id="sdsQuestionTitle">1. 我感到情绪沮丧，郁闷</h3>
+                        
+                        <div class="question-options">
+                            <button class="option-btn sds-option" data-score="1">
+                                <span class="option-label">A</span>
+                                <span class="option-text">从无或偶尔</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button class="option-btn sds-option" data-score="2">
+                                <span class="option-label">B</span>
+                                <span class="option-text">有时</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button class="option-btn sds-option" data-score="3">
+                                <span class="option-label">C</span>
+                                <span class="option-text">经常</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button class="option-btn sds-option" data-score="4">
+                                <span class="option-label">D</span>
+                                <span class="option-text">总是如此</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="question-navigation">
+                        <button class="btn-question-nav btn-prev" id="sdsPrevQuestion" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                            上一题
+                        </button>
+                        <button class="btn-question-nav btn-next" id="sdsNextQuestion" disabled>
+                            下一题
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 结果页 -->
+                <div class="assessment-result" id="sdsResult" style="display: none;">
+                    <div class="result-score-card">
+                        <div class="result-icon" id="sdsResultIcon">
+                            <i class="fas fa-cloud-rain"></i>
+                        </div>
+                        <div class="result-score" id="sdsResultScore">0</div>
+                        <div class="result-level" id="sdsResultLevel">抑郁水平</div>
+                    </div>
+                    
+                    <div class="result-analysis">
+                        <h3><i class="fas fa-clipboard-check"></i> 结果分析</h3>
+                        <p id="sdsResultText">结果分析内容...</p>
+                    </div>
+                    
+                    <div class="result-actions">
+                        <button class="btn-result-action btn-restart" id="restartSdsTest">
+                            <i class="fas fa-redo"></i>
+                            重新测评
+                        </button>
+                        <button class="btn-result-action btn-consult" onclick="location.href='ai-chat.html'">
+                            <i class="fas fa-comments"></i>
+                            AI心理咨询
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BAI 贝克焦虑测试模态框 -->
+    <div class="modal-overlay" id="baiModal">
+        <div class="modal-content assessment-modal">
+            <button class="modal-close" id="closeBaiModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="assessment-modal-header">
+                <div class="assessment-modal-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h2>BAI 贝克焦虑测试</h2>
+                <p class="assessment-modal-subtitle">科学评估焦虑症状，关注身心健康</p>
+            </div>
+            
+            <div class="assessment-modal-body">
+                <!-- 欢迎页 -->
+                <div class="assessment-welcome" id="baiWelcome">
+                    <div class="welcome-content">
+                        <div class="welcome-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h3>测评说明</h3>
+                        <div class="welcome-desc">
+                            <p>本量表共有<strong>21道题目</strong>，用于评估您的焦虑症状程度。</p>
+                            <p>请根据您<strong>过去一周</strong>（包括当天）的体验选择：</p>
+                            <ul>
+                                <li><span class="option-badge">0</span> 完全没有</li>
+                                <li><span class="option-badge">1</span> 轻微，但并不令我烦恼</li>
+                                <li><span class="option-badge">2</span> 中等，有时令我不舒服</li>
+                                <li><span class="option-badge">3</span> 严重，我几乎无法忍受</li>
+                            </ul>
+                            <p class="welcome-tips">
+                                <i class="fas fa-lightbulb"></i>
+                                请根据实际感受作答，预计用时<strong>5分钟</strong>。
+                            </p>
+                        </div>
+                        <button class="btn-assessment-start" id="startBaiTest">
+                            <i class="fas fa-play-circle"></i>
+                            开始测评
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 答题页 -->
+                <div class="assessment-question" id="baiQuestion" style="display: none;">
+                    <div class="question-progress">
+                        <div class="progress-bar-wrapper">
+                            <div class="progress-bar-fill" id="baiProgress"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>题目 <strong id="baiCurrentQuestionNum">1</strong> / 21</span>
+                            <span id="baiProgressPercent">5%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="question-content">
+                        <h3 class="question-title" id="baiQuestionTitle">1. 麻木或刺痛</h3>
+                        
+                        <div class="question-options">
+                            <button class="option-btn bai-option" data-score="0">
+                                <span class="option-label">0</span>
+                                <span class="option-text">完全没有</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button class="option-btn bai-option" data-score="1">
+                                <span class="option-label">1</span>
+                                <span class="option-text">轻微，不烦恼</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button class="option-btn bai-option" data-score="2">
+                                <span class="option-label">2</span>
+                                <span class="option-text">中等，不舒服</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button class="option-btn bai-option" data-score="3">
+                                <span class="option-label">3</span>
+                                <span class="option-text">严重，难忍受</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="question-navigation">
+                        <button class="btn-question-nav btn-prev" id="baiPrevQuestion" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                            上一题
+                        </button>
+                        <button class="btn-question-nav btn-next" id="baiNextQuestion" disabled>
+                            下一题
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 结果页 -->
+                <div class="assessment-result" id="baiResult" style="display: none;">
+                    <div class="result-score-card">
+                        <div class="result-icon" id="baiResultIcon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="result-score" id="baiResultScore">0</div>
+                        <div class="result-level" id="baiResultLevel">焦虑水平</div>
+                    </div>
+                    
+                    <div class="result-analysis">
+                        <h3><i class="fas fa-clipboard-check"></i> 结果分析</h3>
+                        <p id="baiResultText">结果分析内容...</p>
+                    </div>
+                    
+                    <div class="result-actions">
+                        <button class="btn-result-action btn-restart" id="restartBaiTest">
+                            <i class="fas fa-redo"></i>
+                            重新测评
+                        </button>
+                        <button class="btn-result-action btn-consult" onclick="location.href='ai-chat.html'">
+                            <i class="fas fa-comments"></i>
+                            AI心理咨询
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCL-90 心理健康自评量表模态框 -->
+    <div class="modal-overlay" id="scl90Modal">
+        <div class="modal-content assessment-modal">
+            <button class="modal-close" id="closeScl90Modal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="assessment-modal-header">
+                <div class="assessment-modal-icon">
+                    <i class="fas fa-notes-medical"></i>
+                </div>
+                <h2>SCL-90 心理健康自评量表</h2>
+                <p class="assessment-modal-subtitle">全面评估心理健康状况的专业工具</p>
+            </div>
+            
+            <div class="assessment-modal-body">
+                <!-- 欢迎页 -->
+                <div class="assessment-welcome" id="scl90Welcome">
+                    <div class="welcome-content">
+                        <div class="welcome-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h3>测评说明</h3>
+                        <div class="welcome-desc">
+                            <p>本量表共有<strong>90道题目</strong>，涵盖9个因子维度：</p>
+                            <ul style="column-count: 2; column-gap: 20px;">
+                                <li>躯体化</li>
+                                <li>强迫症状</li>
+                                <li>人际关系敏感</li>
+                                <li>抑郁</li>
+                                <li>焦虑</li>
+                                <li>敌对</li>
+                                <li>恐怖</li>
+                                <li>偏执</li>
+                                <li>精神病性</li>
+                            </ul>
+                            <p>请根据<strong>最近一周</strong>的感受选择：</p>
+                            <ul>
+                                <li><span class="option-badge">1</span> 无（自觉并无该项问题）</li>
+                                <li><span class="option-badge">2</span> 轻度（有该问题，但不频繁、不严重）</li>
+                                <li><span class="option-badge">3</span> 中度（严重程度为轻到中度）</li>
+                                <li><span class="option-badge">4</span> 偏重（程度为中到严重）</li>
+                                <li><span class="option-badge">5</span> 严重（频度和强度都十分严重）</li>
+                            </ul>
+                            <p class="welcome-tips">
+                                <i class="fas fa-lightbulb"></i>
+                                请逐条填写，不可遗漏，预计用时<strong>10分钟</strong>。
+                            </p>
+                        </div>
+                        <button class="btn-assessment-start" id="startScl90Test">
+                            <i class="fas fa-play-circle"></i>
+                            开始测评
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 答题页 -->
+                <div class="assessment-question" id="scl90Question" style="display: none;">
+                    <div class="question-progress">
+                        <div class="progress-bar-wrapper">
+                            <div class="progress-bar-fill" id="scl90Progress"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>题目 <strong id="scl90CurrentQuestionNum">1</strong> / 90</span>
+                            <span id="scl90ProgressPercent">1%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="question-content">
+                        <h3 class="question-title" id="scl90QuestionTitle">1. 头痛</h3>
+                        
+                        <div class="question-options">
+                            <button class="option-btn scl90-option" data-score="1">
+                                <span class="option-label">1</span>
+                                <span class="option-text">无</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button class="option-btn scl90-option" data-score="2">
+                                <span class="option-label">2</span>
+                                <span class="option-text">轻度</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button class="option-btn scl90-option" data-score="3">
+                                <span class="option-label">3</span>
+                                <span class="option-text">中度</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button class="option-btn scl90-option" data-score="4">
+                                <span class="option-label">4</span>
+                                <span class="option-text">偏重</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button class="option-btn scl90-option" data-score="5">
+                                <span class="option-label">5</span>
+                                <span class="option-text">严重</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="question-navigation">
+                        <button class="btn-question-nav btn-prev" id="scl90PrevQuestion" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                            上一题
+                        </button>
+                        <button class="btn-question-nav btn-next" id="scl90NextQuestion" disabled>
+                            下一题
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 结果页 -->
+                <div class="assessment-result" id="scl90Result" style="display: none;">
+                    <div class="result-score-card">
+                        <div class="result-icon" id="scl90ResultIcon">
+                            <i class="fas fa-notes-medical"></i>
+                        </div>
+                        <div class="result-score" id="scl90ResultScore">0</div>
+                        <div class="result-level" id="scl90ResultLevel">总分</div>
+                    </div>
+                    
+                    <div class="result-analysis">
+                        <h3><i class="fas fa-clipboard-check"></i> 综合评估</h3>
+                        <p id="scl90ResultText">结果分析内容...</p>
+                        
+                        <h3 style="margin-top: 20px;"><i class="fas fa-th-list"></i> 因子分析</h3>
+                        <div id="scl90FactorAnalysis" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;"></div>
+                    </div>
+                    
+                    <div class="result-actions">
+                        <button class="btn-result-action btn-restart" id="restartScl90Test">
+                            <i class="fas fa-redo"></i>
+                            重新测评
+                        </button>
+                        <button class="btn-result-action btn-consult" onclick="location.href='ai-chat.html'">
+                            <i class="fas fa-comments"></i>
+                            AI心理咨询
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DASS-21 抑郁焦虑压力量表模态框 -->
+    <div class="modal-overlay" id="dass21Modal">
+        <div class="modal-content assessment-modal">
+            <button class="modal-close" id="closeDass21Modal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="assessment-modal-header">
+                <div class="assessment-modal-icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <h2>DASS-21 抑郁焦虑压力量表</h2>
+                <p class="assessment-modal-subtitle">全面评估您的抑郁、焦虑和压力水平</p>
+            </div>
+            
+            <div class="assessment-modal-body">
+                <!-- 欢迎页 -->
+                <div class="assessment-welcome" id="dass21Welcome">
+                    <div class="welcome-content">
+                        <div class="welcome-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h3>测评说明</h3>
+                        <div class="welcome-desc">
+                            <p>本量表共有<strong>21道题目</strong>，分为三个维度：</p>
+                            <ul>
+                                <li><span class="option-badge">D</span> 抑郁（7题）</li>
+                                <li><span class="option-badge">A</span> 焦虑（7题）</li>
+                                <li><span class="option-badge">S</span> 压力（7题）</li>
+                            </ul>
+                            <p>请根据<strong>最近一周</strong>的感受选择：</p>
+                            <ul>
+                                <li><span class="option-badge">0</span> 完全不适用于我</li>
+                                <li><span class="option-badge">1</span> 在某种程度上或某些时候适用</li>
+                                <li><span class="option-badge">2</span> 在相当大程度上或相当长时间适用</li>
+                                <li><span class="option-badge">3</span> 非常适用或大部分时间适用</li>
+                            </ul>
+                            <p class="welcome-tips">
+                                <i class="fas fa-lightbulb"></i>
+                                请诚实作答，预计用时<strong>5分钟</strong>。
+                            </p>
+                        </div>
+                        <button class="btn-assessment-start" id="startDass21Test">
+                            <i class="fas fa-play-circle"></i>
+                            开始测评
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 答题页 -->
+                <div class="assessment-question" id="dass21Question" style="display: none;">
+                    <div class="question-progress">
+                        <div class="progress-bar-wrapper">
+                            <div class="progress-bar-fill" id="dass21Progress"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>题目 <strong id="dass21CurrentQuestionNum">1</strong> / 21</span>
+                            <span id="dass21ProgressPercent">5%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="question-content">
+                        <h3 class="question-title" id="dass21QuestionTitle">1. 我发现很难放松下来</h3>
+                        
+                        <div class="question-options">
+                            <button class="option-btn dass21-option" data-score="0">
+                                <span class="option-label">0</span>
+                                <span class="option-text">完全不适用</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button class="option-btn dass21-option" data-score="1">
+                                <span class="option-label">1</span>
+                                <span class="option-text">某种程度适用</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button class="option-btn dass21-option" data-score="2">
+                                <span class="option-label">2</span>
+                                <span class="option-text">相当大程度适用</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button class="option-btn dass21-option" data-score="3">
+                                <span class="option-label">3</span>
+                                <span class="option-text">非常适用</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="question-navigation">
+                        <button class="btn-question-nav btn-prev" id="dass21PrevQuestion" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                            上一题
+                        </button>
+                        <button class="btn-question-nav btn-next" id="dass21NextQuestion" disabled>
+                            下一题
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 结果页 -->
+                <div class="assessment-result" id="dass21Result" style="display: none;">
+                    <div class="result-score-card">
+                        <div class="result-icon" id="dass21ResultIcon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h3 style="color: white; margin: 10px 0;">综合评估结果</h3>
+                        <div style="display: flex; gap: 20px; justify-content: center; margin-top: 15px;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 14px; opacity: 0.9;">抑郁</div>
+                                <div style="font-size: 32px; font-weight: bold;" id="dass21DepressionScore">0</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 14px; opacity: 0.9;">焦虑</div>
+                                <div style="font-size: 32px; font-weight: bold;" id="dass21AnxietyScore">0</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 14px; opacity: 0.9;">压力</div>
+                                <div style="font-size: 32px; font-weight: bold;" id="dass21StressScore">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-analysis">
+                        <h3><i class="fas fa-clipboard-check"></i> 结果分析</h3>
+                        <div id="dass21ResultText"></div>
+                    </div>
+                    
+                    <div class="result-actions">
+                        <button class="btn-result-action btn-restart" id="restartDass21Test">
+                            <i class="fas fa-redo"></i>
+                            重新测评
+                        </button>
+                        <button class="btn-result-action btn-consult" onclick="location.href='ai-chat.html'">
+                            <i class="fas fa-comments"></i>
+                            AI心理咨询
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PSQI 匹兹堡睡眠质量指数模态框 -->
+    <div class="modal-overlay" id="psqiModal">
+        <div class="modal-content assessment-modal">
+            <button class="modal-close" id="closePsqiModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="assessment-modal-header">
+                <div class="assessment-modal-icon">
+                    <i class="fas fa-bed"></i>
+                </div>
+                <h2>PSQI 匹兹堡睡眠质量指数</h2>
+                <p class="assessment-modal-subtitle">评估您最近一个月的睡眠质量</p>
+            </div>
+            
+            <div class="assessment-modal-body">
+                <!-- 欢迎页 -->
+                <div class="assessment-welcome" id="psqiWelcome">
+                    <div class="welcome-content">
+                        <div class="welcome-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h3>测评说明</h3>
+                        <div class="welcome-desc">
+                            <p>本量表评估您<strong>最近一个月</strong>的睡眠状况。</p>
+                            <p>包含<strong>7个成分</strong>的评估：</p>
+                            <ul>
+                                <li><span class="option-badge">1</span> 睡眠质量</li>
+                                <li><span class="option-badge">2</span> 入睡时间</li>
+                                <li><span class="option-badge">3</span> 睡眠时间</li>
+                                <li><span class="option-badge">4</span> 睡眠效率</li>
+                                <li><span class="option-badge">5</span> 睡眠障碍</li>
+                                <li><span class="option-badge">6</span> 催眠药物</li>
+                                <li><span class="option-badge">7</span> 日间功能障碍</li>
+                            </ul>
+                            <p class="welcome-tips">
+                                <i class="fas fa-lightbulb"></i>
+                                请如实作答，预计用时<strong>4分钟</strong>。
+                            </p>
+                        </div>
+                        <button class="btn-assessment-start" id="startPsqiTest">
+                            <i class="fas fa-play-circle"></i>
+                            开始测评
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 答题页 -->
+                <div class="assessment-question" id="psqiQuestion" style="display: none;">
+                    <div class="question-progress">
+                        <div class="progress-bar-wrapper">
+                            <div class="progress-bar-fill" id="psqiProgress"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>成分 <strong id="psqiCurrentQuestionNum">1</strong> / 7</span>
+                            <span id="psqiProgressPercent">14%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="question-content">
+                        <h3 class="question-title" id="psqiQuestionTitle">1. 睡眠质量</h3>
+                        <p class="question-subtitle" id="psqiQuestionSubtitle">您认为自己上个月的睡眠质量如何？</p>
+                        
+                        <div class="question-options" id="psqiQuestionOptions">
+                            <button class="option-btn psqi-option" data-score="0">
+                                <span class="option-text">很好</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button class="option-btn psqi-option" data-score="1">
+                                <span class="option-text">较好</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button class="option-btn psqi-option" data-score="2">
+                                <span class="option-text">较差</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button class="option-btn psqi-option" data-score="3">
+                                <span class="option-text">很差</span>
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="question-navigation">
+                        <button class="btn-question-nav btn-prev" id="psqiPrevQuestion" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                            上一项
+                        </button>
+                        <button class="btn-question-nav btn-next" id="psqiNextQuestion" disabled>
+                            下一项
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 结果页 -->
+                <div class="assessment-result" id="psqiResult" style="display: none;">
+                    <div class="result-score-card">
+                        <div class="result-icon" id="psqiResultIcon">
+                            <i class="fas fa-bed"></i>
+                        </div>
+                        <div class="result-score" id="psqiResultScore">0</div>
+                        <div class="result-level" id="psqiResultLevel">睡眠质量</div>
+                    </div>
+                    
+                    <div class="result-analysis">
+                        <h3><i class="fas fa-clipboard-check"></i> 结果分析</h3>
+                        <p id="psqiResultText">结果分析内容...</p>
+                    </div>
+                    
+                    <div class="result-actions">
+                        <button class="btn-result-action btn-restart" id="restartPsqiTest">
+                            <i class="fas fa-redo"></i>
+                            重新测评
+                        </button>
+                        <button class="btn-result-action btn-consult" onclick="location.href='ai-chat.html'">
+                            <i class="fas fa-comments"></i>
+                            AI心理咨询
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部浮动AI助手按钮 -->
+    <button class="floating-ai-btn" id="floatingAIBtn" title="与AI助手对话" onclick="location.href='ai-chat.html'">
+        <i class="fas fa-comments"></i>
+        <span class="pulse-ring"></span>
+    </button>
+
+    <!-- 引入用户API -->
+    <script src="api/user.js"></script>
+    
+    <!-- 引入主 JS -->
+    <script src="js/main.js"></script>
+	</body>
+</html>

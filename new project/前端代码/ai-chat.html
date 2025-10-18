@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI对话 - 情绪岛</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	</head>
+	<body>
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-island-tropical"></i>
+                <span>情绪岛</span>
+                <small>守护心灵的港湾</small>
+            </div>
+            <nav class="nav">
+                <a href="home.html" class="nav-link">
+                    <i class="fas fa-home"></i> 首页
+                </a>
+                <a href="ai-chat.html" class="nav-link active">
+                    <i class="fas fa-comments"></i> AI对话
+                </a>
+                <a href="tools.html" class="nav-link">
+                    <i class="fas fa-toolbox"></i> 心理工具
+                </a>
+                <a href="profile.html" class="nav-link">
+                    <i class="fas fa-user"></i> 个人中心
+                </a>
+            </nav>
+            <div class="user-info">
+                <button class="btn-login" id="loginBtn">登录</button>
+                <div class="user-profile" id="userProfile" style="display: none;">
+                    <div class="user-avatar" id="headerAvatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="user-details">
+                        <span class="user-nickname" id="headerNickname">用户</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="user-dropdown">
+                        <a href="profile.html" class="dropdown-item">
+                            <i class="fas fa-user"></i> 个人中心
+                        </a>
+                        <a href="#" class="dropdown-item" id="headerLogoutBtn">
+                            <i class="fas fa-sign-out-alt"></i> 退出登录
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+        <!-- AI 对话页 -->
+        <section id="ai-chat" class="page active">
+            <div class="chat-container">
+                <div class="chat-sidebar">
+                    <div class="ai-avatar">
+                        <div class="avatar-img">
+                            <img src="img/ai.png" alt="AI心理助手">
+                        </div>
+                        <h3>AI心理助手</h3>
+                        <p class="ai-status">在线，随时倾听</p>
+                    </div>
+                    <div class="ai-intro">
+                        <h4>AI助手介绍</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> 24小时情绪陪伴</li>
+                            <li><i class="fas fa-check"></i> 专业心理对话</li>
+                            <li><i class="fas fa-check"></i> 保护隐私安全</li>
+                            <li><i class="fas fa-check"></i> 智能情绪识别</li>
+                        </ul>
+                    </div>
+                    <div class="emergency-help">
+                        <h4>紧急求助</h4>
+                        <div class="hotline">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <strong>心理援助热线</strong>
+                                <p>010-82951332</p>
+                            </div>
+                        </div>
+                        <button class="btn-emergency">
+                            <i class="fas fa-exclamation-triangle"></i> 紧急求助
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="chat-main">
+                    <div class="chat-header">
+                        <h2>AI心理助手</h2>
+                        <div class="chat-actions">
+                            <button class="btn-icon" title="清空对话">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message ai-message">
+                            <div class="message-avatar">
+                                <img src="img/ai.png" alt="AI助手">
+                            </div>
+                            <div class="message-content">
+                                <p>你好，欢迎来到情绪岛！我是你的AI心理陪伴助手。</p>
+                                <p>在这里，你可以放心地表达你的情绪和想法，我会用心倾听并陪伴你。有什么想聊的吗？</p>
+                            </div>
+                            <span class="message-time">刚刚</span>
+                        </div>
+                    </div>
+                    
+                    <div class="quick-replies">
+                        <button class="quick-reply-btn">我今天压力很大</button>
+                        <button class="quick-reply-btn">感觉有点焦虑</button>
+                        <button class="quick-reply-btn">陪我放松一下</button>
+                        <button class="quick-reply-btn">想做个心理测评</button>
+                    </div>
+                    
+                    <div class="chat-input-area">
+                        <!-- 表情选择面板 -->
+                        <div class="emoji-picker" id="emojiPicker" style="display: none;">
+                            <div class="emoji-header">选择表情</div>
+                            <div class="emoji-grid">
+                                <span class="emoji-item">😊</span>
+                                <span class="emoji-item">😂</span>
+                                <span class="emoji-item">😍</span>
+                                <span class="emoji-item">😭</span>
+                                <span class="emoji-item">😅</span>
+                                <span class="emoji-item">😘</span>
+                                <span class="emoji-item">🥰</span>
+                                <span class="emoji-item">😉</span>
+                                <span class="emoji-item">😎</span>
+                                <span class="emoji-item">😢</span>
+                                <span class="emoji-item">😡</span>
+                                <span class="emoji-item">😱</span>
+                                <span class="emoji-item">😴</span>
+                                <span class="emoji-item">🤔</span>
+                                <span class="emoji-item">🤗</span>
+                                <span class="emoji-item">🤨</span>
+                                <span class="emoji-item">😌</span>
+                                <span class="emoji-item">😔</span>
+                                <span class="emoji-item">😪</span>
+                                <span class="emoji-item">😥</span>
+                                <span class="emoji-item">😰</span>
+                                <span class="emoji-item">😓</span>
+                                <span class="emoji-item">🤯</span>
+                                <span class="emoji-item">😖</span>
+                                <span class="emoji-item">😣</span>
+                                <span class="emoji-item">😞</span>
+                                <span class="emoji-item">😩</span>
+                                <span class="emoji-item">😫</span>
+                                <span class="emoji-item">🥺</span>
+                                <span class="emoji-item">😤</span>
+                                <span class="emoji-item">😃</span>
+                                <span class="emoji-item">😄</span>
+                                <span class="emoji-item">😁</span>
+                                <span class="emoji-item">😆</span>
+                                <span class="emoji-item">🤣</span>
+                                <span class="emoji-item">☺️</span>
+                                <span class="emoji-item">😇</span>
+                                <span class="emoji-item">🙂</span>
+                                <span class="emoji-item">🙃</span>
+                                <span class="emoji-item">😋</span>
+                                <span class="emoji-item">😛</span>
+                                <span class="emoji-item">😝</span>
+                                <span class="emoji-item">😜</span>
+                                <span class="emoji-item">🤪</span>
+                                <span class="emoji-item">🤑</span>
+                                <span class="emoji-item">🤐</span>
+                                <span class="emoji-item">🤫</span>
+                                <span class="emoji-item">🤭</span>
+                                <span class="emoji-item">🥱</span>
+                                <span class="emoji-item">😐</span>
+                                <span class="emoji-item">😑</span>
+                                <span class="emoji-item">😶</span>
+                                <span class="emoji-item">😏</span>
+                                <span class="emoji-item">😒</span>
+                                <span class="emoji-item">🙄</span>
+                                <span class="emoji-item">😬</span>
+                                <span class="emoji-item">🤥</span>
+                                <span class="emoji-item">😵</span>
+                                <span class="emoji-item">😳</span>
+                                <span class="emoji-item">🥴</span>
+                                <span class="emoji-item">👍</span>
+                                <span class="emoji-item">👎</span>
+                                <span class="emoji-item">👏</span>
+                                <span class="emoji-item">🙏</span>
+                                <span class="emoji-item">💪</span>
+                                <span class="emoji-item">🤝</span>
+                                <span class="emoji-item">✌️</span>
+                                <span class="emoji-item">🤞</span>
+                                <span class="emoji-item">🤟</span>
+                                <span class="emoji-item">🤘</span>
+                                <span class="emoji-item">👌</span>
+                                <span class="emoji-item">🤏</span>
+                                <span class="emoji-item">👈</span>
+                                <span class="emoji-item">👉</span>
+                                <span class="emoji-item">👆</span>
+                                <span class="emoji-item">👇</span>
+                                <span class="emoji-item">☝️</span>
+                                <span class="emoji-item">✋</span>
+                                <span class="emoji-item">🤚</span>
+                                <span class="emoji-item">🖐️</span>
+                                <span class="emoji-item">❤️</span>
+                                <span class="emoji-item">🧡</span>
+                                <span class="emoji-item">💛</span>
+                                <span class="emoji-item">💚</span>
+                                <span class="emoji-item">💙</span>
+                                <span class="emoji-item">💜</span>
+                                <span class="emoji-item">🖤</span>
+                                <span class="emoji-item">🤍</span>
+                                <span class="emoji-item">🤎</span>
+                                <span class="emoji-item">💔</span>
+                                <span class="emoji-item">💕</span>
+                                <span class="emoji-item">💖</span>
+                                <span class="emoji-item">💗</span>
+                                <span class="emoji-item">💓</span>
+                                <span class="emoji-item">💞</span>
+                                <span class="emoji-item">💝</span>
+                                <span class="emoji-item">✨</span>
+                                <span class="emoji-item">⭐</span>
+                                <span class="emoji-item">🌟</span>
+                                <span class="emoji-item">💫</span>
+                                <span class="emoji-item">🔥</span>
+                                <span class="emoji-item">💥</span>
+                            </div>
+                        </div>
+                        
+                        <button class="btn-icon" id="emojiBtn" title="选择表情">
+                            <i class="fas fa-smile"></i>
+                        </button>
+                        <input type="text" id="chatInput" placeholder="输入你的想法..." />
+                        <button class="btn-icon" id="voiceBtn" title="语音输入">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <button class="btn-send" id="sendMessage">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 底部浮动AI助手按钮 -->
+    <button class="floating-ai-btn" id="floatingAIBtn" title="与AI助手对话" onclick="location.href='ai-chat.html'">
+        <i class="fas fa-comments"></i>
+        <span class="pulse-ring"></span>
+    </button>
+
+    <!-- 引入用户API -->
+    <script src="api/user.js"></script>
+    
+    <!-- 引入主 JS -->
+    <script src="js/main.js"></script>
+	</body>
+</html>
+
+
+
