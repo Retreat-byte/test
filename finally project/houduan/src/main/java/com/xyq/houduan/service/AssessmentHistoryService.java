@@ -238,6 +238,32 @@ public class AssessmentHistoryService {
     }
 
     /**
+     * 获取测评历史记录（前端专用接口）
+     */
+    public List<AssessmentHistoryResponse> getAssessmentHistory(
+            String username, String startDate, String endDate, String type) {
+        User user = userRepository.findByPhoneAndDeletedFalse(username)
+            .orElseThrow(() -> new RuntimeException("用户不存在"));
+
+        List<AssessmentHistory> assessments;
+        LocalDate start = LocalDate.parse(startDate);
+        LocalDate end = LocalDate.parse(endDate);
+
+        if (type != null && !type.isEmpty()) {
+            AssessmentType assessmentType = AssessmentType.fromCode(type);
+            assessments = assessmentHistoryRepository.findByUserIdAndTypeAndDateBetweenAndDeletedFalseOrderByDateDesc(
+                user.getId(), assessmentType, start, end);
+        } else {
+            assessments = assessmentHistoryRepository.findByUserIdAndDateBetweenAndDeletedFalseOrderByDateDesc(
+                user.getId(), start, end);
+        }
+
+        return assessments.stream()
+            .map(this::convertToAssessmentHistoryResponse)
+            .collect(Collectors.toList());
+    }
+
+    /**
      * 获取测评趋势数据
      */
     public PageResponse<AssessmentHistoryResponse> getAssessmentTrend(

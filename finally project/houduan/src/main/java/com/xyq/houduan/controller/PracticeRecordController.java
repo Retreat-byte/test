@@ -35,7 +35,7 @@ import jakarta.validation.Valid;
  * 实现符合API文档规范的练习记录接口
  */
 @RestController
-@RequestMapping("/practice")
+@RequestMapping("/api/practices")
 public class PracticeRecordController {
 
 
@@ -47,9 +47,9 @@ public class PracticeRecordController {
 
     /**
      * 提交练习记录
-     * POST /practice/record
+     * POST /api/practices
      */
-    @PostMapping("/record")
+    @PostMapping("")
     public ResponseEntity<BaseResponse<PracticeHistoryResponse>> submitPracticeRecord(
             @Valid @RequestBody PracticeRecordRequest request,
             Authentication authentication) {
@@ -82,7 +82,7 @@ public class PracticeRecordController {
 
     /**
      * 获取练习历史记录
-     * GET /practice/history?days=30&type=breathing&limit=50
+     * GET /api/practices/history?days=30&type=breathing&limit=50
      */
     @GetMapping("/history")
     public ResponseEntity<BaseResponse<List<PracticeHistoryResponse>>> getPracticeHistory(
@@ -125,7 +125,7 @@ public class PracticeRecordController {
 
     /**
      * 获取练习统计数据
-     * GET /practice/statistics
+     * GET /api/practices/statistics
      */
     @GetMapping("/statistics")
     public ResponseEntity<BaseResponse<PracticeStatisticsResponse>> getPracticeStatistics(
@@ -191,7 +191,7 @@ public class PracticeRecordController {
 
     /**
      * 删除练习记录
-     * DELETE /practice/{practiceId}
+     * DELETE /api/practices/{practiceId}
      */
     @DeleteMapping("/{practiceId}")
     public ResponseEntity<BaseResponse<Void>> deletePracticeRecord(

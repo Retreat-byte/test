@@ -122,6 +122,38 @@ public class AssessmentController {
     }
 
     /**
+     * 获取测评历史记录（前端专用接口）
+     * GET /api/assessments/history?days=90&type=sds&limit=20
+     */
+    @GetMapping("/history")
+    public ResponseEntity<BaseResponse<java.util.List<AssessmentHistoryResponse>>> getAssessmentHistory(
+            @RequestParam(defaultValue = "90") int days,
+            @RequestParam(required = false) String type,
+            @RequestParam(required = false) Integer limit,
+            Authentication authentication) {
+        try {
+            String phone = authentication.getName();
+            
+            // 计算日期范围
+            java.time.LocalDate endDate = java.time.LocalDate.now();
+            java.time.LocalDate startDate = endDate.minusDays(days - 1);
+            
+            // 获取记录
+            java.util.List<AssessmentHistoryResponse> records = assessmentHistoryService.getAssessmentHistory(
+                    phone, startDate.toString(), endDate.toString(), type);
+            
+            // 应用限制
+            if (limit != null && limit > 0) {
+                records = records.stream().limit(limit).collect(java.util.stream.Collectors.toList());
+            }
+            
+            return ResponseEntity.ok(BaseResponse.success("获取测评历史记录成功", records));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(BaseResponse.error(e.getMessage()));
+        }
+    }
+
+    /**
      * 获取指定日期的测评记录
      */
     @GetMapping("/date/{date}")
