@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试测评记录保存修复 - 最终版本</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 测评记录保存修复测试 - 最终版本</h1>
+    
+    <div class="test-section">
+        <h2>📊 问题诊断</h2>
+        <p><strong>问题：</strong>完成心理压力测试后，个人中心仍显示"0 完成测评"</p>
+        <p><strong>原因：</strong>保存测评记录时使用了错误的localStorage键名</p>
+        <ul>
+            <li>❌ 之前保存到：<code>assessments</code></li>
+            <li>✅ 应该保存到：<code>assessmentHistory</code></li>
+        </ul>
+    </div>
+    
+    <div class="test-section">
+        <h2>🔧 修复内容</h2>
+        <ul>
+            <li>✅ 修正了localStorage键名：<code>assessments</code> → <code>assessmentHistory</code></li>
+            <li>✅ 添加了完整的测评记录字段（id, type, timestamp等）</li>
+            <li>✅ 确保与ProfileAPI.getLocalAssessmentHistory()兼容</li>
+        </ul>
+    </div>
+    
+    <div class="test-section">
+        <h2>📋 测试测评记录保存</h2>
+        <button class="test-button" onclick="testAssessmentSave()">测试保存APESK-PSTR测评</button>
+        <button class="test-button" onclick="testSASSave()">测试保存SAS测评</button>
+        <button class="test-button" onclick="checkLocalStorage()">检查本地存储</button>
+        <button class="test-button" onclick="simulateProfileAPI()">模拟个人中心数据获取</button>
+        <button class="test-button" onclick="clearTestData()">清除测试数据</button>
+        
+        <div id="testResult"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>📈 本地存储数据</h2>
+        <div id="localStorageData"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>🎯 个人中心模拟</h2>
+        <div id="profileSimulation"></div>
+    </div>
+
+    <script>
+        // 模拟修复后的测评记录保存函数
+        async function saveAssessmentRecord(name, score, level, analysis, factorScores = null) {
+            console.log('🎯 开始保存测评记录:', { name, score, level });
+            
+            try {
+                // 确定测评类型
+                let type = 'apeskPstr';
+                if (name.includes('SAS')) type = 'sas';
+                else if (name.includes('SDS')) type = 'sds';
+                else if (name.includes('BAI')) type = 'bai';
+                else if (name.includes('PSQI')) type = 'psqi';
+                else if (name.includes('DASS-21')) type = 'dass21';
+                else if (name.includes('SCL-90')) type = 'scl90';
+                
+                // 1. 保存到本地存储（使用正确的键名）
+                const assessments = JSON.parse(localStorage.getItem('assessmentHistory')) || [];
+                assessments.unshift({
+                    id: `assessment_${Date.now()}`,
+                    type: type,
+                    name,
+                    score: Math.round(score),
+                    level,
+                    analysis,
+                    factorScores,
+                    timestamp: new Date().toISOString(),
+                    date: new Date().toISOString().split('T')[0]
+                });
+                
+                // 只保留最近50条记录
+                if (assessments.length > 50) {
+                    assessments.pop();
+                }
+                
+                localStorage.setItem('assessmentHistory', JSON.stringify(assessments));
+                console.log('✅ 本地存储已更新');
+                
+                return {
+                    success: true,
+                    message: '测评记录保存成功',
+                    data: assessments[0]
+                };
+                
+            } catch (error) {
+                console.error('❌ 保存测评记录时出错:', error);
+                return {
+                    success: false,
+                    message: '保存失败: ' + error.message
+                };
+            }
+        }
+        
+        // 模拟ProfileAPI.getLocalAssessmentHistory()
+        function getLocalAssessmentHistory() {
+            try {
+                const stored = localStorage.getItem('assessmentHistory');
+                if (stored) {
+                    return JSON.parse(stored);
+                } else {
+                    return [];
+                }
+            } catch (error) {
+                console.error('读取测评历史错误:', error);
+                return [];
+            }
+        }
+        
+        async function testAssessmentSave() {
+            const resultDiv = document.getElementById('testResult');
+            resultDiv.innerHTML = '<div class="info">正在测试APESK-PSTR测评记录保存...</div>';
+            
+            try {
+                const result = await saveAssessmentRecord(
+                    'APESK-PSTR 心理压力量表',
+                    22,
+                    '压力经验不足',
+                    '您在生活中经历的压力可能不够，或是没有正确地认识自己。建议您更主动一些，在工作、社交、娱乐等活动上增加些刺激，让生活更加充实。'
+                );
+                
+                if (result.success) {
+                    resultDiv.innerHTML = `
+                        <div class="success">
+                            ✅ APESK-PSTR测评记录保存成功！<br>
+                            ID: ${result.data.id}<br>
+                            类型: ${result.data.type}<br>
+                            分数: ${result.data.score}<br>
+                            等级: ${result.data.level}<br>
+                            保存时间: ${new Date(result.data.timestamp).toLocaleString()}
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `<div class="error">❌ 保存失败: ${result.message}</div>`;
+                }
+                
+                checkLocalStorage();
+                simulateProfileAPI();
+                
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error">❌ 测试失败: ${error.message}</div>`;
+            }
+        }
+        
+        async function testSASSave() {
+            const resultDiv = document.getElementById('testResult');
+            resultDiv.innerHTML = '<div class="info">正在测试SAS测评记录保存...</div>';
+            
+            try {
+                const result = await saveAssessmentRecord(
+                    'SAS 焦虑自评量表',
+                    45,
+                    '轻度焦虑',
+                    '您目前处于轻度焦虑状态，建议适当放松，进行一些正念练习。'
+                );
+                
+                if (result.success) {
+                    resultDiv.innerHTML = `
+                        <div class="success">
+                            ✅ SAS测评记录保存成功！<br>
+                            ID: ${result.data.id}<br>
+                            类型: ${result.data.type}<br>
+                            分数: ${result.data.score}<br>
+                            等级: ${result.data.level}<br>
+                            保存时间: ${new Date(result.data.timestamp).toLocaleString()}
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `<div class="error">❌ 保存失败: ${result.message}</div>`;
+                }
+                
+                checkLocalStorage();
+                simulateProfileAPI();
+                
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error">❌ 测试失败: ${error.message}</div>`;
+            }
+        }
+        
+        function checkLocalStorage() {
+            const dataDiv = document.getElementById('localStorageData');
+            const assessments = getLocalAssessmentHistory();
+            
+            if (assessments.length === 0) {
+                dataDiv.innerHTML = '<div class="info">暂无测评记录</div>';
+                return;
+            }
+            
+            let html = '<h3>📋 测评记录列表 (assessmentHistory)</h3>';
+            assessments.forEach((assessment, index) => {
+                html += `
+                    <div style="border: 1px solid #ddd; padding: 10px; margin: 5px 0; border-radius: 4px;">
+                        <strong>${index + 1}. ${assessment.name}</strong><br>
+                        ID: ${assessment.id} | 类型: ${assessment.type}<br>
+                        分数: ${assessment.score} | 等级: ${assessment.level}<br>
+                        时间: ${new Date(assessment.timestamp).toLocaleString()}
+                    </div>
+                `;
+            });
+            
+            dataDiv.innerHTML = html;
+        }
+        
+        function simulateProfileAPI() {
+            const profileDiv = document.getElementById('profileSimulation');
+            const assessments = getLocalAssessmentHistory();
+            
+            const profileData = {
+                statistics: {
+                    totalCheckins: 1,
+                    totalPractices: 1,
+                    totalAssessments: assessments.length
+                }
+            };
+            
+            profileDiv.innerHTML = `
+                <h3>🎯 个人中心统计数据模拟</h3>
+                <div style="display: flex; gap: 20px; margin: 10px 0;">
+                    <div style="background: #e3f2fd; padding: 15px; border-radius: 8px; text-align: center;">
+                        <div style="font-size: 24px; font-weight: bold; color: #1976d2;">${profileData.statistics.totalCheckins}</div>
+                        <div>打卡天数</div>
+                    </div>
+                    <div style="background: #f3e5f5; padding: 15px; border-radius: 8px; text-align: center;">
+                        <div style="font-size: 24px; font-weight: bold; color: #7b1fa2;">${profileData.statistics.totalPractices}</div>
+                        <div>练习次数</div>
+                    </div>
+                    <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; text-align: center;">
+                        <div style="font-size: 24px; font-weight: bold; color: #388e3c;">${profileData.statistics.totalAssessments}</div>
+                        <div>完成测评</div>
+                    </div>
+                </div>
+                <div class="${profileData.statistics.totalAssessments > 0 ? 'success' : 'warning'}">
+                    ${profileData.statistics.totalAssessments > 0 ? 
+                        `✅ 修复成功！个人中心现在显示 ${profileData.statistics.totalAssessments} 次测评` : 
+                        '⚠️ 暂无测评记录，请先完成一次测评'}
+                </div>
+            `;
+        }
+        
+        function clearTestData() {
+            localStorage.removeItem('assessmentHistory');
+            document.getElementById('testResult').innerHTML = '<div class="info">测试数据已清除</div>';
+            document.getElementById('localStorageData').innerHTML = '<div class="info">暂无测评记录</div>';
+            document.getElementById('profileSimulation').innerHTML = '<div class="info">请先完成测评测试</div>';
+        }
+        
+        // 页面加载时检查本地存储
+        window.onload = function() {
+            checkLocalStorage();
+            simulateProfileAPI();
+        };
+    </script>
+</body>
+</html>

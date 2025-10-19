@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API连接测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-button {
+            background: #4A90E2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background: #357ABD;
+        }
+        .result {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 10px 0;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+        .success { border-color: #28a745; background: #d4edda; }
+        .error { border-color: #dc3545; background: #f8d7da; }
+    </style>
+</head>
+<body>
+    <h1>🔧 API连接测试</h1>
+    
+    <div class="test-section">
+        <h2>1. 基础连接测试</h2>
+        <button class="test-button" onclick="testBasicConnection()">测试基础连接</button>
+        <div id="basicResult" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>2. 用户注册测试</h2>
+        <button class="test-button" onclick="testUserRegister()">测试用户注册</button>
+        <div id="registerResult" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>3. 用户登录测试</h2>
+        <button class="test-button" onclick="testUserLogin()">测试用户登录</button>
+        <div id="loginResult" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>4. 心情打卡测试</h2>
+        <button class="test-button" onclick="testMoodCheckin()">测试心情打卡</button>
+        <div id="moodResult" class="result"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8080/api';
+        let testToken = null;
+        
+        function showResult(elementId, content, isSuccess = true) {
+            const element = document.getElementById(elementId);
+            element.textContent = content;
+            element.className = `result ${isSuccess ? 'success' : 'error'}`;
+        }
+        
+        async function testBasicConnection() {
+            try {
+                const response = await fetch(`${API_BASE}/users/verify`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                const data = await response.json();
+                showResult('basicResult', 
+                    `状态码: ${response.status}\n响应: ${JSON.stringify(data, null, 2)}`, 
+                    response.ok
+                );
+            } catch (error) {
+                showResult('basicResult', `连接错误: ${error.message}`, false);
+            }
+        }
+        
+        async function testUserRegister() {
+            try {
+                const response = await fetch(`${API_BASE}/users/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        phone: '13800138001',
+                        password: '123456',
+                        confirmPassword: '123456',
+                        verificationCode: '1234'
+                    })
+                });
+                
+                const data = await response.json();
+                showResult('registerResult', 
+                    `状态码: ${response.status}\n响应: ${JSON.stringify(data, null, 2)}`, 
+                    response.ok
+                );
+            } catch (error) {
+                showResult('registerResult', `注册错误: ${error.message}`, false);
+            }
+        }
+        
+        async function testUserLogin() {
+            try {
+                const response = await fetch(`${API_BASE}/users/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        phone: '13800138001',
+                        password: '123456'
+                    })
+                });
+                
+                const data = await response.json();
+                if (data.success && data.data && data.data.token) {
+                    testToken = data.data.token;
+                }
+                showResult('loginResult', 
+                    `状态码: ${response.status}\n响应: ${JSON.stringify(data, null, 2)}`, 
+                    response.ok
+                );
+            } catch (error) {
+                showResult('loginResult', `登录错误: ${error.message}`, false);
+            }
+        }
+        
+        async function testMoodCheckin() {
+            if (!testToken) {
+                showResult('moodResult', '请先进行登录测试获取token', false);
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/moods/checkin`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${testToken}`
+                    },
+                    body: JSON.stringify({
+                        mood: 'happy',
+                        value: 8,
+                        note: 'API测试心情打卡'
+                    })
+                });
+                
+                const data = await response.json();
+                showResult('moodResult', 
+                    `状态码: ${response.status}\n响应: ${JSON.stringify(data, null, 2)}`, 
+                    response.ok
+                );
+            } catch (error) {
+                showResult('moodResult', `心情打卡错误: ${error.message}`, false);
+            }
+        }
+        
+        // 页面加载时自动测试基础连接
+        window.onload = function() {
+            testBasicConnection();
+        };
+    </script>
+</body>
+</html>
