@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>法律工具 - 法智顾问</title>
+    
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/legal-tools.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/auth-modal.css">
+    <link rel="stylesheet" href="../css/auth-additions.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-balance-scale"></i>
+                    <span>法智顾问</span>
+                </a>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../index.html">首页</a></li>
+                    <li><a href="ai-consult.html">AI咨询</a></li>
+                    <li><a href="legal-tools.html" class="active">法律工具</a></li>
+                    <li><a href="legal-knowledge.html">法律知识</a></li>
+                    <li><a href="user-center.html">个人中心</a></li>
+                </ul>
+                
+                <div class="nav-profile">
+                    <button class="profile-trigger" type="button">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </button>
+                    <div class="profile-menu">
+                        <a href="ai-consult.html" class="profile-menu-item">
+                            <i class="fas fa-comments"></i>
+                            <span>开始咨询</span>
+                        </a>
+                        <a href="user-center.html" class="profile-menu-item">
+                            <i class="fas fa-id-card"></i>
+                            <span>个人中心</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面头部 -->
+    <section class="tools-header">
+        <div class="container">
+            <div class="header-content" data-aos="fade-up">
+                <h1>法律工具</h1>
+                <p>精准高效的专业法律辅助工具</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 工具分类 -->
+    <section class="tools-section">
+        <div class="container">
+            <!-- 工具网格 -->
+            <div class="tools-grid">
+                <!-- 法律计算器 -->
+                <div class="tool-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="tool-icon calculator">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="tool-title">法律计算器</h3>
+                    <p class="tool-description">
+                        精确计算赔偿金额、诉讼费用、延期利息等各类法律相关费用，
+                        为您的诉讼案件提供数据支持
+                    </p>
+                    <ul class="tool-features">
+                        <li><i class="fas fa-check"></i> 劳动补偿计算</li>
+                        <li><i class="fas fa-check"></i> 诉讼费用计算</li>
+                        <li><i class="fas fa-check"></i> 逾期利息计算</li>
+                        <li><i class="fas fa-check"></i> 违约金计算</li>
+                    </ul>
+                    <div class="tool-meta">
+                        <span class="usage-count">
+                            <i class="fas fa-users"></i> 已使用 2,847 次
+                        </span>
+                        <button class="btn btn-primary" onclick="openToolModal('calculator')">
+                            立即使用 <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 法律文件审查 -->
+                <div class="tool-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="tool-icon review">
+                        <i class="fas fa-file-circle-check"></i>
+                    </div>
+                    <h3 class="tool-title">法律文件审查</h3>
+                    <p class="tool-description">
+                        AI智能审查合同条款，识别潜在法律风险，
+                        提供专业的修改建议，确保您的合法权益
+                    </p>
+                    <ul class="tool-features">
+                        <li><i class="fas fa-check"></i> 风险识别</li>
+                        <li><i class="fas fa-check"></i> 条款分析</li>
+                        <li><i class="fas fa-check"></i> 专业建议</li>
+                        <li><i class="fas fa-check"></i> 合规性检查</li>
+                    </ul>
+                    <div class="tool-meta">
+                        <span class="usage-count">
+                            <i class="fas fa-users"></i> 已使用 1,523 次
+                        </span>
+                        <button class="btn btn-primary" onclick="openToolModal('review')">
+                            立即使用 <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 法律文书模板 -->
+                <div class="tool-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="tool-icon template">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3 class="tool-title">法律文书模板</h3>
+                    <p class="tool-description">
+                        提供各类标准法律文书模板，包括起诉状、答辩书、合同协议等，
+                        可直接下载或在线编辑
+                    </p>
+                    <ul class="tool-features">
+                        <li><i class="fas fa-check"></i> 标准模板</li>
+                        <li><i class="fas fa-check"></i> 格式规范</li>
+                        <li><i class="fas fa-check"></i> 一键下载</li>
+                        <li><i class="fas fa-check"></i> 在线编辑</li>
+                    </ul>
+                    <div class="tool-meta">
+                        <span class="usage-count">
+                            <i class="fas fa-users"></i> 已使用 3,156 次
+                        </span>
+                        <button class="btn btn-primary" onclick="openToolModal('template')">
+                            立即使用 <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 案例检索 -->
+                <div class="tool-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="tool-icon search">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="tool-title">智能案例检索</h3>
+                    <p class="tool-description">
+                        海量真实案例数据库，AI智能匹配相似案例，
+                        分析判决趋势，为您的案件提供参考依据
+                    </p>
+                    <ul class="tool-features">
+                        <li><i class="fas fa-check"></i> 全国案例覆盖</li>
+                        <li><i class="fas fa-check"></i> 智能匹配</li>
+                        <li><i class="fas fa-check"></i> 判决分析</li>
+                        <li><i class="fas fa-check"></i> 趋势预测</li>
+                    </ul>
+                    <div class="tool-meta">
+                        <span class="usage-count">
+                            <i class="fas fa-users"></i> 已使用 4,892 次
+                        </span>
+                        <button class="btn btn-primary" onclick="openToolModal('search')">
+                            立即使用 <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 重要提示 -->
+            <section class="notice-section" data-aos="fade-up">
+                <h3 class="notice-title">重要提示</h3>
+                <div class="notice-list">
+                    <ul class="notice-column">
+                        <li>本工具提供的结果仅供参考，不构成正式法律意见。</li>
+                        <li>各地法规存在差异，请结合当地法律政策使用。</li>
+                    </ul>
+                    <ul class="notice-column">
+                        <li>涉及重大权益事项，请咨询持证律师获取精准建议。</li>
+                        <li>如需深入解答，可立即使用 AI 咨询功能获得支持。</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- 返回顶部 -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- API 文件 -->
+    <script src="../api/config.js"></script>
+    <script src="../api/request.js"></script>
+    <script src="../api/auth.js"></script>
+    <script src="../api/ai-consult.js"></script>
+    <script src="../api/legal-tools.js"></script>
+    <script src="../api/legal-knowledge.js"></script>
+    <script src="../api/user.js"></script>
+    <script src="../api/index.js"></script>
+    
+    <script src="../js/utils.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/animations.js"></script>
+    <script src="../js/auth-modal.js"></script>
+    <script src="../js/auth-check.js"></script>
+    <script src="../js/legal-tools.js"></script>
+</body>
+</html>
+

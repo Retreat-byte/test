@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心 - 法智顾问</title>
+    
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/user-center.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/auth-modal.css">
+    <link rel="stylesheet" href="../css/auth-additions.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-balance-scale"></i>
+                    <span>法智顾问</span>
+                </a>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../index.html">首页</a></li>
+                    <li><a href="ai-consult.html">AI咨询</a></li>
+                    <li><a href="legal-tools.html">法律工具</a></li>
+                    <li><a href="legal-knowledge.html">法律知识</a></li>
+                    <li><a href="user-center.html" class="active">个人中心</a></li>
+                </ul>
+                
+                <div class="nav-profile">
+                    <button class="profile-trigger" type="button">
+                        <div class="profile-avatar" data-avatar-preview data-avatar-default-icon="user">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </button>
+                    <div class="profile-menu">
+                        <a href="user-center.html" class="profile-menu-item">
+                            <i class="fas fa-id-card"></i>
+                            <span>个人信息</span>
+                        </a>
+                        <button type="button" class="profile-menu-item logout" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>退出登录</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <section class="user-center-section">
+        <div class="container">
+            <div class="user-layout">
+                <!-- 左侧菜单 -->
+                <aside class="user-sidebar" data-aos="fade-right">
+                    <div class="user-profile-card">
+                        <div class="avatar-upload-wrapper">
+                            <div class="user-avatar" data-avatar-preview>
+                            <i class="fas fa-user-circle"></i>
+                            </div>
+                            <button class="avatar-upload-btn" type="button" data-avatar-upload-trigger title="上传头像">
+                                <i class="fas fa-camera"></i>
+                            </button>
+                        </div>
+                        <p class="avatar-upload-hint">支持 JPG/PNG，大小不超过 2MB</p>
+                        <input type="file" id="avatarFileInput" accept="image/png,image/jpeg,image/jpg,image/webp" hidden>
+                        <h3 class="user-name">张三</h3>
+                        <p class="user-role">普通用户</p>
+                    </div>
+                    
+                    <nav class="user-nav">
+                        <a href="#" class="nav-item active" data-tab="overview">
+                            <i class="fas fa-th-large"></i>
+                            <span>概览</span>
+                        </a>
+                        <a href="#" class="nav-item" data-tab="tools">
+                            <i class="fas fa-tools"></i>
+                            <span>工具使用记录</span>
+                        </a>
+                        <a href="#" class="nav-item" data-tab="documents">
+                            <i class="fas fa-file-alt"></i>
+                            <span>文书模板</span>
+                        </a>
+                        <a href="#" class="nav-item" data-tab="favorites">
+                            <i class="fas fa-bookmark"></i>
+                            <span>法规收藏</span>
+                        </a>
+                        <a href="#" class="nav-item" data-tab="settings">
+                            <i class="fas fa-cog"></i>
+                            <span>账户设置</span>
+                        </a>
+                    </nav>
+
+                    <!-- 快捷操作（移动到左侧） -->
+                    <div class="quick-actions sidebar">
+                        <h3>快捷操作</h3>
+                        <div class="actions-grid sidebar">
+                            <button class="action-btn sidebar" onclick="window.location.href='ai-consult.html'">
+                                <i class="fas fa-robot"></i>
+                                <span>开始AI咨询</span>
+                                <p>获取专业法律建议</p>
+                            </button>
+                            
+                            <button class="action-btn sidebar" onclick="window.location.href='legal-tools.html'">
+                                <i class="fas fa-toolbox"></i>
+                                <span>使用法律工具</span>
+                                <p>计算器、审查、模板</p>
+                            </button>
+                            
+                            <button class="action-btn sidebar" onclick="window.location.href='legal-knowledge.html'">
+                                <i class="fas fa-book"></i>
+                                <span>查看法律法规</span>
+                                <p>浏览国家法律文献</p>
+                            </button>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- 右侧内容区 -->
+                <div class="user-content" data-aos="fade-left">
+                    <!-- 概览标签页 -->
+                    <div class="tab-content active" id="overview">
+                        <div class="content-header">
+                            <h2>数据概览</h2>
+                            <p>查看您的使用统计和最近活动</p>
+                        </div>
+                        
+                        <div class="stats-cards">
+                            <div class="stat-card green">
+                                <div class="stat-icon">
+                                    <i class="fas fa-tools"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <div class="stat-number">28</div>
+                                    <div class="stat-label">工具使用次数</div>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card purple">
+                                <div class="stat-icon">
+                                    <i class="fas fa-download"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <div class="stat-number">8</div>
+                                    <div class="stat-label">下载文书</div>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card orange">
+                                <div class="stat-icon">
+                                    <i class="fas fa-bookmark"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <div class="stat-number">12</div>
+                                    <div class="stat-label">收藏法规</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="recent-activity">
+                            <h3>最近活动</h3>
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-icon blue">
+                                        <i class="fas fa-comment-dots"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <h4>完成了劳动合同纠纷AI咨询</h4>
+                                        <p class="activity-time">2小时前</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="activity-item">
+                                    <div class="activity-icon green">
+                                        <i class="fas fa-calculator"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <h4>使用法律计算器计算劳动补偿金</h4>
+                                        <p class="activity-time">5小时前</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="activity-item">
+                                    <div class="activity-icon purple">
+                                        <i class="fas fa-download"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <h4>下载了劳动合同模板</h4>
+                                        <p class="activity-time">1天前</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="activity-item">
+                                    <div class="activity-icon orange">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <h4>收藏了《民法典》</h4>
+                                        <p class="activity-time">2天前</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 移除 AI咨询记录 标签页 -->
+
+                    <!-- 工具使用记录标签页 -->
+                    <div class="tab-content" id="tools">
+                        <div class="content-header">
+                            <h2>工具使用记录</h2>
+                            <p>查看您使用过的法律工具</p>
+                        </div>
+                        
+                        <div class="tools-history">
+                            <div class="tool-history-item">
+                                <div class="tool-info">
+                                    <i class="fas fa-calculator"></i>
+                                    <div>
+                                        <h4>法律计算器 - 劳动补偿金计算</h4>
+                                        <p>计算结果：¥45,000</p>
+                                    </div>
+                                </div>
+                                <span class="time">5小时前</span>
+                            </div>
+                            
+                            <div class="tool-history-item">
+                                <div class="tool-info">
+                                    <i class="fas fa-file-circle-check"></i>
+                                    <div>
+                                        <h4>法律文件审查 - 劳动合同</h4>
+                                        <p>发现3处需要注意的条款</p>
+                                    </div>
+                                </div>
+                                <span class="time">2天前</span>
+                            </div>
+                            
+                            <div class="tool-history-item">
+                                <div class="tool-info">
+                                    <i class="fas fa-file-alt"></i>
+                                    <div>
+                                        <h4>法律文书模板 - 劳动合同模板</h4>
+                                        <p>已下载劳动合同标准模板</p>
+                                    </div>
+                                </div>
+                                <span class="time">3天前</span>
+                            </div>
+                            
+                            <div class="tool-history-item">
+                                <div class="tool-info">
+                                    <i class="fas fa-search"></i>
+                                    <div>
+                                        <h4>智能案例检索 - 劳动纠纷案例</h4>
+                                        <p>检索到15个相似案例</p>
+                                    </div>
+                                </div>
+                                <span class="time">1周前</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 文书模板标签页 -->
+                    <div class="tab-content" id="documents">
+                        <div class="content-header">
+                            <h2>下载的文书模板</h2>
+                            <p>管理您下载的法律文书</p>
+                        </div>
+                        
+                        <div class="documents-grid">
+                            <div class="document-card">
+                                <div class="document-icon">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                                <h4>劳动合同模板</h4>
+                                <p>下载时间：1天前</p>
+                                <div class="document-actions">
+                                    <button class="btn btn-outline btn-small">
+                                        <i class="fas fa-download"></i> 重新下载
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 法规收藏标签页 -->
+                    <div class="tab-content" id="favorites">
+                        <div class="content-header">
+                            <h2>收藏的法规</h2>
+                            <p>您收藏的法律法规列表</p>
+                        </div>
+                        
+                        <div class="favorites-list">
+                            <div class="favorite-item">
+                                <div class="favorite-info">
+                                    <h4>中华人民共和国民法典</h4>
+                                    <p>收藏时间：2天前</p>
+                                </div>
+                                <div class="favorite-actions">
+                                    <button class="btn btn-primary btn-small" onclick="window.location.href='legal-knowledge.html'">
+                                        查看
+                                    </button>
+                                    <button class="btn btn-outline btn-small">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 账户设置标签页 -->
+                    <div class="tab-content" id="settings">
+                        <div class="content-header">
+                            <h2>账户设置</h2>
+                            <p>管理您的个人信息和偏好</p>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h3>基本信息</h3>
+                            <div class="avatar-settings-row">
+                                <div class="settings-avatar-preview" data-avatar-preview>
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                                <div class="avatar-settings-actions">
+                                    <p class="avatar-settings-title">个人头像</p>
+                                    <p class="avatar-settings-desc">推荐使用 1:1 比例图片，支持 JPG/PNG，大小不超过 2MB</p>
+                                    <button class="btn btn-outline btn-small" type="button" data-avatar-upload-trigger>更换头像</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>昵称</label>
+                                <input type="text" value="张三">
+                            </div>
+                            <div class="form-group">
+                                <label>邮箱</label>
+                                <input type="email" placeholder="请输入邮箱">
+                            </div>
+                            <div class="form-group">
+                                <label>手机号</label>
+                                <input type="tel" placeholder="请输入手机号" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>性别</label>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="gender" value="male">
+                                        <span>男</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="gender" value="female">
+                                        <span>女</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="gender" value="secret" checked>
+                                        <span>保密</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary">保存更改</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 返回顶部 -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- API 文件 -->
+    <script src="../api/config.js"></script>
+    <script src="../api/request.js"></script>
+    <script src="../api/auth.js"></script>
+    <script src="../api/ai-consult.js"></script>
+    <script src="../api/legal-tools.js"></script>
+    <script src="../api/legal-knowledge.js"></script>
+    <script src="../api/user.js"></script>
+    <script src="../api/index.js"></script>
+    
+    <script src="../js/utils.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/animations.js"></script>
+    <script src="../js/auth-modal.js"></script>
+    <script src="../js/auth-check.js"></script>
+    <script src="../js/user-center.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,120 @@
+/**
+ * 登录状态相关的额外样式
+ */
+
+/* 登录按钮样式（未登录时显示在导航栏） */
+.profile-trigger.login-mode {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.profile-trigger .btn-login {
+    padding: 10px 24px;
+    background: linear-gradient(135deg, #A8A8A8 0%, #8B8B8B 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 12px rgba(139, 139, 139, 0.25);
+    letter-spacing: 0.3px;
+}
+
+.profile-trigger .btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(139, 139, 139, 0.35);
+    background: linear-gradient(135deg, #8B8B8B 0%, #6B6B6B 100%);
+}
+
+.profile-trigger .btn-login:active {
+    transform: translateY(0);
+}
+
+/* 新对话按钮容器 */
+.chat-header-actions {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+}
+
+/* 新对话按钮 */
+.new-chat-btn {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #A8A8A8 0%, #8B8B8B 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(139, 139, 139, 0.3);
+}
+
+.new-chat-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 139, 139, 0.4);
+    background: linear-gradient(135deg, #8B8B8B 0%, #6B6B6B 100%);
+}
+
+.new-chat-btn i {
+    font-size: 14px;
+}
+
+/* 历史记录按钮调整（与新对话按钮并排） */
+.history-toggle-btn {
+    padding: 10px 20px;
+    background: white;
+    color: #8B8B8B;
+    border: 2px solid #8B8B8B;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s;
+}
+
+.history-toggle-btn:hover {
+    background: linear-gradient(135deg, #A8A8A8 0%, #8B8B8B 100%);
+    color: white;
+    border-color: #8B8B8B;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 139, 139, 0.3);
+}
+
+.history-toggle-btn i {
+    font-size: 14px;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .chat-header-actions {
+        gap: 6px;
+    }
+    
+    .new-chat-btn,
+    .history-toggle-btn {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+    
+    .new-chat-btn span,
+    .history-toggle-btn span {
+        display: none;
+    }
+    
+    .new-chat-btn i,
+    .history-toggle-btn i {
+        margin: 0;
+        font-size: 16px;
+    }
+}

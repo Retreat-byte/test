@@ -1,0 +1,73 @@
+                    <div class="search-filters">
+                        <div class="custom-select" data-name="caseType">
+                            <div class="select-trigger">
+                                <span class="select-value">全部案件类型</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="select-options">
+                                <div class="select-option" data-value="全部案件类型">全部案件类型</div>
+                                <div class="select-option" data-value="人民调解工作">人民调解工作</div>
+                                <div class="select-option" data-value="法律援助工作">法律援助工作</div>
+                                <div class="select-option" data-value="公证工作">公证工作</div>
+                                <div class="select-option" data-value="司法鉴定工作">司法鉴定工作</div>
+                                <div class="select-option" data-value="社区矫正工作">社区矫正工作</div>
+                                <div class="select-option" data-value="律师工作">律师工作</div>
+                                <div class="select-option" data-value="戒毒工作">戒毒工作</div>
+                                <div class="select-option" data-value="监狱工作">监狱工作</div>
+                                <div class="select-option" data-value="法制工作">法制工作</div>
+                                <div class="select-option" data-value="法治宣传教育工作">法治宣传教育工作</div>
+                                <div class="select-option" data-value="司法考试工作">司法考试工作</div>
+                                <div class="select-option" data-value="仲裁案例">仲裁案例</div>
+                            </div>
+                        </div>
+                        <div class="custom-select" data-name="region">
+                            <div class="select-trigger">
+                                <span class="select-value">全部审理地区</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="select-options">
+                                <div class="select-option" data-value="全部审理地区">全部审理地区</div>
+                                <div class="select-option" data-value="北京市">北京市</div>
+                                <div class="select-option" data-value="天津市">天津市</div>
+                                <div class="select-option" data-value="上海市">上海市</div>
+                                <div class="select-option" data-value="重庆市">重庆市</div>
+                                <div class="select-option" data-value="河北省">河北省</div>
+                                <div class="select-option" data-value="山西省">山西省</div>
+                                <div class="select-option" data-value="辽宁省">辽宁省</div>
+                                <div class="select-option" data-value="吉林省">吉林省</div>
+                                <div class="select-option" data-value="黑龙江省">黑龙江省</div>
+                                <div class="select-option" data-value="江苏省">江苏省</div>
+                                <div class="select-option" data-value="浙江省">浙江省</div>
+                                <div class="select-option" data-value="安徽省">安徽省</div>
+                                <div class="select-option" data-value="福建省">福建省</div>
+                                <div class="select-option" data-value="江西省">江西省</div>
+                                <div class="select-option" data-value="山东省">山东省</div>
+                                <div class="select-option" data-value="河南省">河南省</div>
+                                <div class="select-option" data-value="湖北省">湖北省</div>
+                                <div class="select-option" data-value="湖南省">湖南省</div>
+                                <div class="select-option" data-value="广东省">广东省</div>
+                                <div class="select-option" data-value="海南省">海南省</div>
+                                <div class="select-option" data-value="四川省">四川省</div>
+                                <div class="select-option" data-value="贵州省">贵州省</div>
+                                <div class="select-option" data-value="云南省">云南省</div>
+                                <div class="select-option" data-value="陕西省">陕西省</div>
+                                <div class="select-option" data-value="甘肃省">甘肃省</div>
+                                <div class="select-option" data-value="青海省">青海省</div>
+                            </div>
+                        </div>
+                        <div class="custom-select" data-name="year">
+                            <div class="select-trigger">
+                                <span class="select-value">全部判决年份</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="select-options">
+                                <div class="select-option" data-value="全部判决年份">全部判决年份</div>
+                                <div class="select-option" data-value="2025年">2025年</div>
+                                <div class="select-option" data-value="2024年">2024年</div>
+                                <div class="select-option" data-value="2023年">2023年</div>
+                                <div class="select-option" data-value="2022年">2022年</div>
+                                <div class="select-option" data-value="2021年">2021年</div>
+                                <div class="select-option" data-value="2020年">2020年</div>
+                            </div>
+                        </div>
+                    </div>

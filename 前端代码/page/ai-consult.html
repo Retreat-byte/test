@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI咨询 - 法智顾问</title>
+    
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/ai-consult.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/auth-modal.css">
+    <link rel="stylesheet" href="../css/auth-additions.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-balance-scale"></i>
+                    <span>法智顾问</span>
+                </a>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../index.html">首页</a></li>
+                    <li><a href="ai-consult.html" class="active">AI咨询</a></li>
+                    <li><a href="legal-tools.html">法律工具</a></li>
+                    <li><a href="legal-knowledge.html">法律知识</a></li>
+                    <li><a href="user-center.html">个人中心</a></li>
+                </ul>
+                
+                <div class="nav-profile">
+                    <button class="profile-trigger" type="button">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </button>
+                    <div class="profile-menu">
+                        <a href="ai-consult.html" class="profile-menu-item">
+                            <i class="fas fa-comments"></i>
+                            <span>开始咨询</span>
+                        </a>
+                        <a href="user-center.html" class="profile-menu-item">
+                            <i class="fas fa-id-card"></i>
+                            <span>个人中心</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <section class="consult-section">
+        <div class="container">
+            <div class="consult-layout">
+                <!-- 左侧边栏 -->
+                <aside class="sidebar" data-aos="fade-right">
+                    <div class="sidebar-card">
+                        <h3>常见问题</h3>
+                        <ul class="question-list">
+                            <li class="question-item" data-question="劳动合同纠纷如何处理？">
+                                <i class="fas fa-file-contract"></i>
+                                <span>劳动合同纠纷如何处理？</span>
+                            </li>
+                            <li class="question-item" data-question="房屋租赁合同注意事项">
+                                <i class="fas fa-home"></i>
+                                <span>房屋租赁合同注意事项</span>
+                            </li>
+                            <li class="question-item" data-question="交通事故责任认定">
+                                <i class="fas fa-car-crash"></i>
+                                <span>交通事故责任认定</span>
+                            </li>
+                            <li class="question-item" data-question="婚姻财产分割问题">
+                                <i class="fas fa-ring"></i>
+                                <span>婚姻财产分割问题</span>
+                            </li>
+                            <li class="question-item" data-question="公司股权转让流程">
+                                <i class="fas fa-building"></i>
+                                <span>公司股权转让流程</span>
+                            </li>
+                            <li class="question-item" data-question="知识产权保护措施">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>知识产权保护措施</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sidebar-card tips-card">
+                        <h3>咨询提示</h3>
+                        <ul class="tips-list">
+                            <li><i class="fas fa-check-circle"></i> 详细描述您的具体情况</li>
+                            <li><i class="fas fa-check-circle"></i> 提供相关时间、地点等信息</li>
+                            <li><i class="fas fa-check-circle"></i> 说明您希望达到的目标</li>
+                            <li><i class="fas fa-check-circle"></i> AI建议仅供参考，重要事项请咨询专业律师</li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- 聊天区域 -->
+                <div class="chat-container" data-aos="fade-up">
+                    <div class="chat-header">
+                        <div class="ai-avatar">
+                            <img src="../img/ai.png" alt="AI法律顾问" class="ai-avatar-img">
+                        </div>
+                        <div class="ai-info">
+                            <h3>AI法律顾问</h3>
+                            <span class="status-badge">
+                                <i class="fas fa-circle"></i>
+                                在线·随时为您服务
+                            </span>
+                        </div>
+                        <div class="chat-header-actions">
+                            <button class="new-chat-btn" id="newChatBtn" title="新对话">
+                                <i class="fas fa-plus"></i>
+                                <span>新对话</span>
+                            </button>
+                            <button class="history-toggle-btn" id="historyToggleBtn" title="历史记录">
+                                <i class="fas fa-history"></i>
+                                <span>历史记录</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="chat-messages" id="chatMessages">
+                        <!-- 欢迎消息 -->
+                        <div class="message ai-message">
+                            <div class="message-avatar">
+                                <img src="../img/ai.png" alt="AI" class="avatar-img">
+                            </div>
+                            <div class="message-content">
+                                <div class="message-bubble">
+                                    <p>您好！我是法智顾问AI助手，很高兴为您提供法律咨询服务。</p>
+                                    <p>请描述您遇到的法律问题，我会为您提供专业的建议和解决方案。</p>
+                                </div>
+                                <div class="message-time">17:31:39</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-input-container">
+                        <div class="input-tools">
+                            <button class="tool-btn" title="上传文件">
+                                <i class="fas fa-paperclip"></i>
+                            </button>
+                            <button class="tool-btn" title="语音输入">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                        </div>
+                        <textarea 
+                            id="chatInput" 
+                            class="chat-input" 
+                            placeholder="请输入您的法律问题..."
+                            rows="3"
+                        ></textarea>
+                        <button id="sendButton" class="send-button">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>发送</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 历史记录侧边栏 -->
+                <div class="history-sidebar" id="historySidebar">
+                    <div class="history-header">
+                        <h3>
+                            <i class="fas fa-history"></i>
+                            历史记录
+                        </h3>
+                        <button class="history-close-btn" id="historyCloseBtn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="history-actions">
+                        <button class="clear-all-btn" id="clearAllBtn">
+                            <i class="fas fa-trash-alt"></i>
+                            清空所有记录
+                        </button>
+                    </div>
+                    <div class="history-list" id="historyList">
+                        <!-- 历史记录将通过JavaScript动态添加 -->
+                        <div class="empty-history">
+                            <i class="fas fa-inbox"></i>
+                            <p>暂无历史记录</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 历史记录遮罩层 -->
+    <div class="history-overlay" id="historyOverlay"></div>
+
+    <!-- 返回顶部 -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- API 文件 -->
+    <script src="../api/config.js"></script>
+    <script src="../api/request.js"></script>
+    <script src="../api/auth.js"></script>
+    <script src="../api/ai-consult.js"></script>
+    <script src="../api/legal-tools.js"></script>
+    <script src="../api/legal-knowledge.js"></script>
+    <script src="../api/user.js"></script>
+    <script src="../api/index.js"></script>
+    
+    <script src="../js/utils.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/animations.js"></script>
+    <script src="../js/auth-modal.js"></script>
+    <script src="../js/auth-check.js"></script>
+    <script src="../js/ai-consult.js"></script>
+</body>
+</html>
+

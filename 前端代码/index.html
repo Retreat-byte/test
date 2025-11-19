@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>法智顾问 - 智能法律咨询助手</title>
+    <meta name="description" content="基于先进AI技术，为您提供24小时专业法律咨询服务，让法律服务更智能、更便捷、更贴心">
+    
+    <!-- CSS 文件 -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/auth-additions.css">
+    
+    <!-- 字体图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- 登录模块样式 -->
+    <link rel="stylesheet" href="css/auth-modal.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-balance-scale"></i>
+                    <span>法智顾问</span>
+                </a>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="active">首页</a></li>
+                    <li><a href="page/ai-consult.html">AI咨询</a></li>
+                    <li><a href="page/legal-tools.html">法律工具</a></li>
+                    <li><a href="page/legal-knowledge.html">法律知识</a></li>
+                    <li><a href="page/user-center.html">个人中心</a></li>
+                </ul>
+                
+                <div class="nav-profile">
+                    <button class="profile-trigger" type="button">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </button>
+                    <div class="profile-menu">
+                        <a href="page/ai-consult.html" class="profile-menu-item">
+                            <i class="fas fa-comments"></i>
+                            <span>开始咨询</span>
+                        </a>
+                        <a href="page/user-center.html" class="profile-menu-item">
+                            <i class="fas fa-id-card"></i>
+                            <span>个人中心</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+            <div class="hero-pattern"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <h1 class="hero-title">
+                    <span class="title-main">智能法律咨询</span>
+                    <span class="title-sub">专业可靠</span>
+                </h1>
+                
+                <p class="hero-description">
+                    基于先进AI技术，为您提供24小时专业法律咨询服务<br>
+                    让法律服务更智能、更便捷、更贴心
+                </p>
+                
+                <div class="hero-actions">
+                    <button class="btn btn-primary btn-large" onclick="window.location.href='page/ai-consult.html'">
+                        <i class="fas fa-robot"></i>
+                        <span>立即开始咨询</span>
+                    </button>
+                    <button class="btn btn-outline btn-large">
+                        <i class="fas fa-play-circle"></i>
+                        <span>了解更多</span>
+                    </button>
+                </div>
+                
+                <div class="hero-features">
+                    <div class="hero-feature-item">
+                        <i class="fas fa-clock"></i>
+                        <span>7×24小时在线</span>
+                    </div>
+                    <div class="hero-feature-item">
+                        <i class="fas fa-brain"></i>
+                        <span>AI智能分析</span>
+                    </div>
+                    <div class="hero-feature-item">
+                        <i class="fas fa-lock"></i>
+                        <span>隐私保护</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="scroll-text">向下滚动</div>
+        </div>
+    </section>
+
+    <!-- 核心功能 -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">核心功能</span>
+                <h2 class="section-title">专业AI技术，为您提供全方位法律服务支持</h2>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon blue">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="feature-title">AI智能咨询</h3>
+                    <p class="feature-description">
+                        基于大型法律知识图谱和深度学习模型，快速解答您的法律疑问，
+                        提供精准的法律建议，随时随地为您服务
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> 24小时即时响应</li>
+                        <li><i class="fas fa-check"></i> 专业法律知识库</li>
+                        <li><i class="fas fa-check"></i> 多轮对话理解</li>
+                    </ul>
+                    <a href="page/ai-consult.html" class="feature-link">
+                        立即体验 <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon green">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3 class="feature-title">文书智能生成</h3>
+                    <p class="feature-description">
+                        智能识别您的文书需求，结合AI技术自动生成各类法律文书，
+                        提供专业的模板和定制化建议，确保您的合法权益
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> 海量模板库</li>
+                        <li><i class="fas fa-check"></i> 智能填充内容</li>
+                        <li><i class="fas fa-check"></i> 合规性检查</li>
+                    </ul>
+                    <a href="page/legal-tools.html" class="feature-link">
+                        查看工具 <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon purple">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="feature-title">案例智能检索</h3>
+                    <p class="feature-description">
+                        海量真实案例数据库，快速检索与您情况类似的案例，
+                        分析判决结果和法律依据，为您提供更准确的预期和建议
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> 全国案例覆盖</li>
+                        <li><i class="fas fa-check"></i> 智能相似度匹配</li>
+                        <li><i class="fas fa-check"></i> 判决趋势分析</li>
+                    </ul>
+                    <a href="page/legal-tools.html" class="feature-link">
+                        开始检索 <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 为什么选择我们 -->
+    <section class="why-choose">
+        <div class="container">
+            <div class="why-choose-content">
+                <div class="why-choose-image" data-aos="fade-right">
+                    <div class="image-wrapper">
+                        <div class="image-decoration"></div>
+                        <img src="img/team-meeting.jpg" alt="专业法律团队" onerror="this.src='https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=80'">
+                    </div>
+                </div>
+                
+                <div class="why-choose-text" data-aos="fade-left">
+                    <span class="section-subtitle">为什么选择法智顾问？</span>
+                    <h2 class="section-title">专业可靠的AI法律服务平台</h2>
+                    
+                    <div class="advantage-list">
+                        <div class="advantage-item">
+                            <div class="advantage-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="advantage-content">
+                                <h4>24小时在线服务</h4>
+                                <p>随时随地获取法律咨询服务，不受时间和地点限制，快速响应您的法律需求</p>
+                            </div>
+                        </div>
+                        
+                        <div class="advantage-item">
+                            <div class="advantage-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="advantage-content">
+                                <h4>专业可靠</h4>
+                                <p>基于权威法律数据库和专业律师团队审核，确保为您提供准确可靠的法律建议</p>
+                            </div>
+                        </div>
+                        
+                        <div class="advantage-item">
+                            <div class="advantage-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="advantage-content">
+                                <h4>技术优势</h4>
+                                <p>采用先进的AI技术和自然语言处理能力，深度理解法律文本，提供精准服务</p>
+                            </div>
+                        </div>
+                        
+                        <div class="advantage-item">
+                            <div class="advantage-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div class="advantage-content">
+                                <h4>隐私保护</h4>
+                                <p>严格的数据加密和隐私保护机制，保护您的个人信息和咨询内容安全</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务流程 -->
+    <section class="process">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">服务流程</span>
+                <h2 class="section-title">简单三步，获取专业法律建议</h2>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-number">01</div>
+                    <div class="step-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <h3 class="step-title">描述问题</h3>
+                    <p class="step-description">详细描述您遇到的法律问题，提供相关背景信息</p>
+                </div>
+                
+                <div class="process-connector"></div>
+                
+                <div class="process-step" data-aos="fade-up" data-aos-delay="200">
+                    <div class="step-number">02</div>
+                    <div class="step-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="step-title">AI分析</h3>
+                    <p class="step-description">AI系统快速分析问题，匹配相关法律条文和案例</p>
+                </div>
+                
+                <div class="process-connector"></div>
+                
+                <div class="process-step" data-aos="fade-up" data-aos-delay="300">
+                    <div class="step-number">03</div>
+                    <div class="step-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3 class="step-title">获取建议</h3>
+                    <p class="step-description">收到专业的法律建议和解决方案，必要时转接专业律师</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA区域 -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content" data-aos="zoom-in">
+                <h2 class="cta-title">开始您的智能法律咨询之旅</h2>
+                <p class="cta-description">
+                    立即体验AI驱动的法律咨询服务，让专业的法律建议触手可及
+                </p>
+                <button class="btn btn-light btn-large" onclick="window.location.href='page/ai-consult.html'">
+                    <i class="fas fa-rocket"></i>
+                    <span>免费开始咨询</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- API 文件 -->
+    <script src="api/config.js"></script>
+    <script src="api/request.js"></script>
+    <script src="api/auth.js"></script>
+    <script src="api/ai-consult.js"></script>
+    <script src="api/legal-tools.js"></script>
+    <script src="api/legal-knowledge.js"></script>
+    <script src="api/user.js"></script>
+    <script src="api/index.js"></script>
+    
+    <!-- JavaScript 文件 -->
+    <script src="js/utils.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/auth-modal.js"></script>
+    <script src="js/auth-check.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>
+

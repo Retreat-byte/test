@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>法律知识 - 法智顾问</title>
+    
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/legal-knowledge.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/auth-modal.css">
+    <link rel="stylesheet" href="../css/auth-additions.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-balance-scale"></i>
+                    <span>法智顾问</span>
+                </a>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../index.html">首页</a></li>
+                    <li><a href="ai-consult.html">AI咨询</a></li>
+                    <li><a href="legal-tools.html">法律工具</a></li>
+                    <li><a href="legal-knowledge.html" class="active">法律知识</a></li>
+                    <li><a href="user-center.html">个人中心</a></li>
+                </ul>
+                
+                <div class="nav-profile">
+                    <button class="profile-trigger" type="button">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </button>
+                    <div class="profile-menu">
+                        <a href="ai-consult.html" class="profile-menu-item">
+                            <i class="fas fa-comments"></i>
+                            <span>开始咨询</span>
+                        </a>
+                        <a href="user-center.html" class="profile-menu-item">
+                            <i class="fas fa-id-card"></i>
+                            <span>个人中心</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 搜索区域 -->
+    <section class="search-section knowledge-search">
+        <div class="container">
+            <div class="knowledge-header" data-aos="fade-up">
+                <h1>法律法规知识库</h1>
+                <p>权威、准确、及时的法律法规文献检索平台</p>
+            </div>
+            
+            <div class="search-box" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="lawSearch" placeholder="输入法律法规名称或关键词进行搜索...">
+                <button class="search-btn" onclick="searchLaws()">
+                    搜索
+                </button>
+            </div>
+            
+            <div class="filter-tabs" data-aos="fade-up" data-aos-delay="200">
+                <button class="filter-tab active" data-filter="all">
+                    <i class="fas fa-th"></i>
+                    <span>全部</span>
+                </button>
+                <button class="filter-tab" data-filter="constitution">
+                    <i class="fas fa-landmark"></i>
+                    <span>宪法</span>
+                </button>
+                <button class="filter-tab" data-filter="law">
+                    <i class="fas fa-book"></i>
+                    <span>法律</span>
+                </button>
+                <button class="filter-tab" data-filter="administrative">
+                    <i class="fas fa-file-contract"></i>
+                    <span>行政法规</span>
+                </button>
+                <button class="filter-tab" data-filter="supervision">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>监察法规</span>
+                </button>
+                <button class="filter-tab" data-filter="local">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>地方法规</span>
+                </button>
+                <button class="filter-tab" data-filter="judicial">
+                    <i class="fas fa-balance-scale"></i>
+                    <span>司法解释</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 法规列表 -->
+    <section class="laws-section">
+        <div class="container">
+            <div class="laws-layout">
+                <!-- 主要内容 -->
+                <div class="laws-main">
+                    <div class="laws-grid" id="lawsGrid">
+                        <!-- 中华人民共和国宪法 -->
+                        <div class="law-card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="law-badge constitution">宪法</div>
+                            <h3 class="law-title">中华人民共和国宪法</h3>
+                            <p class="law-meta">
+                                <span><i class="fas fa-bookmark"></i> 1260条</span>
+                                <span><i class="fas fa-calendar"></i> 生效: 2021-01-01</span>
+                                <span><i class="fas fa-sync-alt"></i> 更新: 2020-05-28</span>
+                            </p>
+                            <p class="law-intro">
+                                1982年12月4日第五届全国人民代表大会第五次会议通过（已做五次修改）
+                            </p>
+                            <div class="law-tags">
+                                <span class="tag">根本大法</span>
+                                <span class="tag">国家制度</span>
+                                <span class="tag">公民权利</span>
+                            </div>
+                            <button class="btn btn-primary" onclick="viewLaw('宪法', '../全国人民代表大会常务委员会关于修改《中华人民共和国网络安全法》的决定_20251028.docx')">
+                                查看全文 <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                        <!-- 中华人民共和国刑法 -->
+                        <div class="law-card" data-aos="fade-up" data-aos-delay="200">
+                            <div class="law-badge criminal">刑法</div>
+                            <h3 class="law-title">中华人民共和国刑法</h3>
+                            <p class="law-meta">
+                                <span><i class="fas fa-bookmark"></i> 452条</span>
+                                <span><i class="fas fa-calendar"></i> 生效: 1980-01-01</span>
+                                <span><i class="fas fa-sync-alt"></i> 更新: 2020-12-26</span>
+                            </p>
+                            <p class="law-intro">
+                                1979年7月1日第五届全国人民代表大会第二次会议通过，历经十一次修正
+                            </p>
+                            <div class="law-tags">
+                                <span class="tag">犯罪</span>
+                                <span class="tag">刑罚</span>
+                                <span class="tag">量刑标准</span>
+                            </div>
+                            <button class="btn btn-primary" onclick="viewLaw('刑法', '../全国人民代表大会常务委员会关于修改《中华人民共和国网络安全法》的决定_20251028.docx')">
+                                查看全文 <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                        <!-- 中华人民共和国民法典 -->
+                        <div class="law-card" data-aos="fade-up" data-aos-delay="300">
+                            <div class="law-badge civil">民法</div>
+                            <h3 class="law-title">中华人民共和国民法典</h3>
+                            <p class="law-meta">
+                                <span><i class="fas fa-bookmark"></i> 1260条</span>
+                                <span><i class="fas fa-calendar"></i> 生效: 2021-01-01</span>
+                                <span><i class="fas fa-sync-alt"></i> 更新: 2020-05-28</span>
+                            </p>
+                            <p class="law-intro">
+                                2020年5月28日第十三届全国人民代表大会第三次会议通过，新中国第一部以法典命名的法律
+                            </p>
+                            <div class="law-tags">
+                                <span class="tag">民法总则</span>
+                                <span class="tag">物权</span>
+                                <span class="tag">合同</span>
+                                <span class="tag">婚姻家庭</span>
+                                <span class="tag">继承</span>
+                            </div>
+                            <button class="btn btn-primary" onclick="viewLaw('民法典', '../全国人民代表大会常务委员会关于修改《中华人民共和国网络安全法》的决定_20251028.docx')">
+                                查看全文 <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                        <!-- 中华人民共和国行政处罚法 -->
+                        <div class="law-card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="law-badge administrative">行政法</div>
+                            <h3 class="law-title">中华人民共和国行政处罚法</h3>
+                            <p class="law-meta">
+                                <span><i class="fas fa-bookmark"></i> 83条</span>
+                                <span><i class="fas fa-calendar"></i> 生效: 1996-10-01</span>
+                                <span><i class="fas fa-sync-alt"></i> 更新: 2021-07-15</span>
+                            </p>
+                            <p class="law-intro">
+                                规范行政处罚的设定和实施，保障和监督行政机关有效实施行政管理
+                            </p>
+                            <div class="law-tags">
+                                <span class="tag">行政处罚</span>
+                                <span class="tag">执法程序</span>
+                            </div>
+                            <button class="btn btn-primary" onclick="viewLaw('行政处罚法', '../全国人民代表大会常务委员会关于修改《中华人民共和国网络安全法》的决定_20251028.docx')">
+                                查看全文 <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                        <!-- 中华人民共和国劳动合同法 -->
+                        <div class="law-card" data-aos="fade-up" data-aos-delay="200">
+                            <div class="law-badge labor">劳动法</div>
+                            <h3 class="law-title">中华人民共和国劳动合同法</h3>
+                            <p class="law-meta">
+                                <span><i class="fas fa-bookmark"></i> 98条</span>
+                                <span><i class="fas fa-calendar"></i> 生效: 2008-01-01</span>
+                                <span><i class="fas fa-sync-alt"></i> 更新: 2012-12-28</span>
+                            </p>
+                            <p class="law-intro">
+                                完善劳动合同制度，明确劳动合同双方当事人的权利和义务，保护劳动者的合法权益
+                            </p>
+                            <div class="law-tags">
+                                <span class="tag">劳动合同</span>
+                                <span class="tag">工作时间</span>
+                                <span class="tag">劳动报酬</span>
+                            </div>
+                            <button class="btn btn-primary" onclick="viewLaw('劳动合同法', '../全国人民代表大会常务委员会关于修改《中华人民共和国网络安全法》的决定_20251028.docx')">
+                                查看全文 <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                        <!-- 中华人民共和国公司法 -->
+                        <div class="law-card" data-aos="fade-up" data-aos-delay="300">
+                            <div class="law-badge company">公司法</div>
+                            <h3 class="law-title">中华人民共和国公司法</h3>
+                            <p class="law-meta">
+                                <span><i class="fas fa-bookmark"></i> 218条</span>
+                                <span><i class="fas fa-calendar"></i> 生效: 1994-07-01</span>
+                                <span><i class="fas fa-sync-alt"></i> 更新: 2018-10-26</span>
+                            </p>
+                            <p class="law-intro">
+                                规范公司的组织和行为，保护公司、股东和债权人的合法权益，维护社会经济秩序
+                            </p>
+                            <div class="law-tags">
+                                <span class="tag">公司组织</span>
+                                <span class="tag">股权转让</span>
+                                <span class="tag">公司治理</span>
+                            </div>
+                            <button class="btn btn-primary" onclick="viewLaw('公司法', '../中华人民共和国城市居民委员会组织法_20251028.docx')">
+                                查看全文 <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                        <!-- 网络安全法修改决定 -->
+                        <div class="law-card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="law-badge administrative">行政法</div>
+                            <h3 class="law-title">网络安全法修改决定</h3>
+                            <p class="law-meta">
+                                <span><i class="fas fa-bookmark"></i> 多条</span>
+                                <span><i class="fas fa-calendar"></i> 生效: 2025-10-28</span>
+                                <span><i class="fas fa-sync-alt"></i> 更新: 2025-10-28</span>
+                            </p>
+                            <p class="law-intro">
+                                全国人民代表大会常务委员会关于修改《中华人民共和国网络安全法》的决定
+                            </p>
+                            <div class="law-tags">
+                                <span class="tag">网络安全</span>
+                                <span class="tag">信息保护</span>
+                                <span class="tag">Word文档</span>
+                            </div>
+                            <button class="btn btn-primary" onclick="viewLaw('网络安全法修改决定', '../全国人民代表大会常务委员会关于修改《中华人民共和国网络安全法》的决定_20251028.docx')">
+                                查看全文 <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                        <!-- 更多法规 -->
+                        <div class="law-card more-card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="more-icon">
+                                <i class="fas fa-plus-circle"></i>
+                            </div>
+                            <h3>更多法律法规</h3>
+                            <p>持续更新中，敬请期待...</p>
+                            <button class="btn btn-outline" onclick="window.utils.showToast('更多法规正在添加中...', 'info')">
+                                了解更多
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 返回顶部 -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <div class="modal-overlay" id="lawModal">
+        <div class="modal law-modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="lawModalTitle">法律全文</h3>
+                <button class="modal-close" id="lawModalClose" aria-label="关闭">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="law-modal-meta" id="lawModalMeta"></div>
+                <div class="law-modal-content" id="lawModalContent"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="lawModalFavorite"><i class="fas fa-star"></i> 收藏</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- API 文件 -->
+    <script src="../api/config.js"></script>
+    <script src="../api/request.js"></script>
+    <script src="../api/auth.js"></script>
+    <script src="../api/ai-consult.js"></script>
+    <script src="../api/legal-tools.js"></script>
+    <script src="../api/legal-knowledge.js"></script>
+    <script src="../api/user.js"></script>
+    <script src="../api/index.js"></script>
+    
+    <script src="../js/utils.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/animations.js"></script>
+    <script src="../js/auth-modal.js"></script>
+    <script src="../js/auth-check.js"></script>
+    <script src="../js/legal-knowledge.js"></script>
+</body>
+</html>
